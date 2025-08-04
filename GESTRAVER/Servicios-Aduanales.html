@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GESTRAVER</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.css">
+    <link rel="icon" href="IMG/GESTRAVER.jpg" type="image/x-icon">
+</head>
+<body>
+    <header class="navbar navbar-expand-lg navbar-custom fixed-top">
+        <a class="navbar-brand" href="#"><img src="IMG/GESTRAVER.jpg" alt="Logo" class="logo"></a>
+        <span class="ml-3 h4 mb-0 text-white">GESTRAVER</span>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav ml-auto">
+                <li class="nav-item"><a href="index.html" class="nav-link">Inicio</a></li>
+                <li class="nav-item"><a href="about.html" class="nav-link">Sobre Nosotros</a></li>
+                <li class="nav-item dropdown">
+                    <a href="#" class="nav-link dropdown-toggle" id="serviciosDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Servicios</a>
+                    <div class="dropdown-menu" aria-labelledby="serviciosDropdown">
+                        <a class="dropdown-item" href="Servicios-Aduanales.html">Servicios Aduanales</a>
+                        <a class="dropdown-item" href="Transporte.html">Transporte Terrestre</a>
+                        <a class="dropdown-item" href="Forward.html">Freight Forwarding</a>
+                    </div>
+                </li>
+                <li class="nav-item"><a href="index.html" class="nav-link">Trabajos</a></li>
+                <li class="nav-item"><a href="index.html" class="nav-link">Galería</a></li>
+                <li class="nav-item"><a href="index.html" class="nav-link">Contacto</a></li>
+            </ul>
+        </div>
+    </header>
+    
+    <section id="servicios-comercio-exterior" data-aos="fade-right">
+        <div class="container">
+        <div class="row">
+            <div class="col-md-6">
+            <h2>SERVICIOS DE COMERCIO EXTERIOR</h2>
+            <p class="patente">Patente 1739</p>
+            <ul class="lista-servicios">
+                <li>Importación y exportación de mercancías en tráfico marítimo</li>
+                <li>Planeación y despacho de proyectos industriales a la medida</li>
+                <li>Atención de juntas técnicas arancelarias</li>
+                <li>Capacitación empresarial</li>
+                <li>Consultas ante las diferentes autoridades en materia aduanera y de comercio exterior</li>
+                <li>Consultas sobre Clasificación Arancelaria</li>
+                <li>Asesoramiento en estrategias para la correcta importación y exportación</li>
+            </ul>
+            </div>
+            <div class="col-md-6">
+            <img src="IMG/img11.jpg" alt="Imagen de comercio exterior" class="img-fluid"> </div>
+        </div>
+        </div>
+    </section>
+    <section id="servicios-comercio-exterior" data-aos="fade-left">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-6">
+                    <img src="IMG/img12.jpg" alt="Imagen de comercio exterior" class="img-flui">
+                </div>
+                <div class="col-md-6">
+                    <h2>Fletes marítimos Internacionales</h2>
+                    <ul class="lista-servicios">
+                        <li>Gran variedad de rutas para optimizar y agilizar el envío de las mercancías.</li>
+                        <li>Opciones con amplios días libres de demoras e ingreso de cartas garantías.</li>
+                        <li>Seguimiento puntual en la emisión de la documentación final</li>
+                    </ul>
+                    <h2>Coordinación Logística</h2>
+                    <ul class="lista-servicios">
+                        <li>Ofrecemos paquetes integrales en donde se brindan beneficios, tales como; maniobras a bajo costo, almacenaje y resguardo de contenedores SIN costo extra.</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+    <footer>
+        <div class="footer-container">
+            <div class="footer-section logo">
+                <img src="IMG/GESTRAVER.jpg" alt="Logo de GESTRAVER">
+                <p>GESTIONES DE TRAFICO VERACRUZ</p>
+            </div>
+    
+                
+            <div class="footer-section">
+                <h4>Avisos</h4> 
+                <ul>
+                    <li><a href="#" target="_blank">Aviso de Privacidad</a></li>
+                    <li><a href="#" target="_blank">Terminos y condiciones</a></li>
+                </ul>
+            </div>
+        </div>
+    
+        <div class="footer-copyright">
+            <p>&copy; 2024 GESTRAVER. Todos los derechos reservados.</p>
+        </div>
+    </footer>
+
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.js"></script>
+    <script>
+        AOS.init();
+
+        $('#imageModal').on('show.bs.modal', function (event) {
+            var button = $(event.relatedTarget);
+            var imageSrc = button.data('image');
+            var modal = $(this);
+            modal.find('#modalImage').attr('src', imageSrc);
+        });
+
+    </script>
+</body>
+</html>
