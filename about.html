@@ -1,127 +1,528 @@
 <!DOCTYPE html>
-<html lang="es">
+<html lang="es" class="scroll-smooth">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>GESTRAVER</title>
-    <link rel="stylesheet" href="styles.css">
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.css">
+    <title>Sobre Nosotros - GESTRAVER</title>
     <link rel="icon" href="IMG/GESTRAVER.jpg" type="image/x-icon">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Outfit:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        primary: '#DC2626',
+                        secondary: '#1E293B',
+                        accent: '#F59E0B',
+                        dark: '#0F172A',
+                    },
+                    fontFamily: {
+                        'display': ['Bebas Neue', 'sans-serif'],
+                        'body': ['Outfit', 'sans-serif'],
+                    },
+                }
+            }
+        }
+    </script>
+    <style>
+        .nav-blur {
+            backdrop-filter: blur(12px);
+            background-color: rgba(15, 23, 42, 0.9);
+        }
+        .animate-on-scroll {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 0.8s ease-out;
+        }
+        .animate-on-scroll.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        .card-hover {
+            transition: all 0.3s ease;
+        }
+        .card-hover:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 20px 40px rgba(220, 38, 38, 0.2);
+        }
+        .language-dropdown {
+            display: none;
+        }
+        .language-selector:hover .language-dropdown {
+            display: block;
+        }
+        .timeline-dot {
+            width: 20px;
+            height: 20px;
+            background: linear-gradient(135deg, #DC2626, #F59E0B);
+            border-radius: 50%;
+            position: absolute;
+            left: -10px;
+            top: 8px;
+            box-shadow: 0 0 0 4px rgba(220, 38, 38, 0.2);
+        }
+    </style>
 </head>
-<body>
-    <header class="navbar navbar-expand-lg navbar-custom fixed-top">
-        <a class="navbar-brand" href="#"><img src="IMG/GESTRAVER.jpg" alt="Logo" class="logo"></a>
-        <span class="ml-3 h4 mb-0 text-white">GESTRAVER</span>
-        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav">
-            <span class="navbar-toggler-icon"></span>
-        </button>
-        <div class="collapse navbar-collapse" id="navbarNav">
-            <ul class="navbar-nav ml-auto">
-                <li class="nav-item"><a href="index.html" class="nav-link">Inicio</a></li>
-                <li class="nav-item"><a href="about.html" class="nav-link">Sobre Nosotros</a></li>
-                <li class="nav-item dropdown">
-                    <a href="#" class="nav-link dropdown-toggle" id="serviciosDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Servicios</a>
-                    <div class="dropdown-menu" aria-labelledby="serviciosDropdown">
-                        <a class="dropdown-item" href="Servicios-Aduanales.html">Servicios Aduanales</a>
-                        <a class="dropdown-item" href="Transporte.html">Transporte Terrestre</a>
-                        <a class="dropdown-item" href="Forward.html">Freight Forwarding</a>
+<body class="font-body bg-gray-50 text-gray-900">
+    
+    <!-- Navbar -->
+    <nav id="navbar" class="fixed w-full z-50 transition-all duration-300 nav-blur shadow-lg">
+        <div class="container mx-auto px-4 lg:px-8">
+            <div class="flex items-center justify-between h-20">
+                <!-- Logo -->
+                <a href="index.html" class="flex items-center space-x-3 group">
+                    <img src="IMG/GESTRAVER.jpg" alt="Logo GESTRAVER" class="h-12 w-12 rounded-lg shadow-lg transition-transform group-hover:scale-110">
+                    <span class="text-2xl font-display text-white tracking-wider">GESTRAVER</span>
+                </a>
+                
+                <!-- Desktop Menu -->
+                <div class="hidden lg:flex items-center space-x-1">
+                    <a href="index.html" class="px-4 py-2 text-white hover:text-primary transition-colors font-medium" data-translate="nav-inicio">Inicio</a>
+                    <a href="about.html" class="px-4 py-2 text-primary transition-colors font-medium" data-translate="nav-nosotros">Nosotros</a>
+                    <div class="relative group">
+                        <button class="px-4 py-2 text-white hover:text-primary transition-colors font-medium flex items-center">
+                            <span data-translate="nav-servicios">Servicios</span>
+                            <svg class="w-4 h-4 ml-1 transition-transform group-hover:rotate-180" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
+                            </svg>
+                        </button>
+                        <div class="absolute top-full left-0 w-56 bg-white rounded-lg shadow-2xl opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300 mt-2">
+                            <a href="Servicios-Aduanales.html" class="block px-6 py-3 text-gray-700 hover:bg-primary hover:text-white transition-colors">Servicios Aduanales</a>
+                            <a href="Transporte.html" class="block px-6 py-3 text-gray-700 hover:bg-primary hover:text-white transition-colors">Transporte Terrestre</a>
+                            <a href="Forward.html" class="block px-6 py-3 text-gray-700 hover:bg-primary hover:text-white transition-colors rounded-b-lg">Freight Forwarding</a>
+                        </div>
                     </div>
-                </li>
-                <li class="nav-item"><a href="index.html" class="nav-link">Trabajos</a></li>
-                <li class="nav-item"><a href="index.html" class="nav-link">Galería</a></li>
-                <li class="nav-item"><a href="index.html" class="nav-link">Contacto</a></li>
-            </ul>
+                    <a href="index.html#trabajos" class="px-4 py-2 text-white hover:text-primary transition-colors font-medium" data-translate="nav-trabajos">Trabajos</a>
+                    <a href="index.html#galeria" class="px-4 py-2 text-white hover:text-primary transition-colors font-medium" data-translate="nav-galeria">Galería</a>
+                    <a href="index.html#contacto" class="px-4 py-2 bg-primary text-white rounded-lg hover:bg-red-700 transition-all font-semibold ml-4" data-translate="nav-contacto">Contacto</a>
+                    
+                    <!-- Language Selector -->
+                    <div class="language-selector ml-2 relative">
+                        <button class="px-3 py-2 text-white hover:text-primary transition-colors flex items-center gap-2">
+                            <i class="fas fa-globe"></i>
+                            <span id="current-lang">ES</span>
+                            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
+                            </svg>
+                        </button>
+                        <div class="language-dropdown absolute top-full right-0 mt-2 bg-white rounded-lg shadow-2xl overflow-hidden min-w-[150px]">
+                            <div onclick="changeLanguage('es')" class="px-4 py-3 cursor-pointer hover:bg-primary hover:text-white transition-colors flex items-center gap-2">
+                                <span>🇲🇽</span>
+                                <span>Español</span>
+                            </div>
+                            <div onclick="changeLanguage('en')" class="px-4 py-3 cursor-pointer hover:bg-primary hover:text-white transition-colors flex items-center gap-2">
+                                <span>🇺🇸</span>
+                                <span>English</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Mobile Menu Button -->
+                <button id="mobile-menu-btn" class="lg:hidden text-white focus:outline-none">
+                    <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
+                    </svg>
+                </button>
+            </div>
         </div>
-    </header>
+        
+        <!-- Mobile Menu -->
+        <div id="mobile-menu" class="hidden lg:hidden bg-secondary/95 backdrop-blur-lg">
+            <div class="container mx-auto px-4 py-4 space-y-2">
+                <a href="index.html" class="block px-4 py-3 text-white hover:bg-primary rounded-lg transition-colors" data-translate="nav-inicio">Inicio</a>
+                <a href="about.html" class="block px-4 py-3 bg-primary text-white rounded-lg" data-translate="nav-nosotros">Nosotros</a>
+                <a href="Servicios-Aduanales.html" class="block px-4 py-3 text-white hover:bg-primary rounded-lg transition-colors">Servicios Aduanales</a>
+                <a href="Transporte.html" class="block px-4 py-3 text-white hover:bg-primary rounded-lg transition-colors">Transporte Terrestre</a>
+                <a href="Forward.html" class="block px-4 py-3 text-white hover:bg-primary rounded-lg transition-colors">Freight Forwarding</a>
+                <a href="index.html#trabajos" class="block px-4 py-3 text-white hover:bg-primary rounded-lg transition-colors" data-translate="nav-trabajos">Trabajos</a>
+                <a href="index.html#galeria" class="block px-4 py-3 text-white hover:bg-primary rounded-lg transition-colors" data-translate="nav-galeria">Galería</a>
+                <a href="index.html#contacto" class="block px-4 py-3 bg-primary text-white rounded-lg text-center font-semibold" data-translate="nav-contacto">Contacto</a>
+                
+                <!-- Language Selector Mobile -->
+                <div class="pt-2 border-t border-gray-700">
+                    <button onclick="changeLanguage('es')" class="block w-full px-4 py-3 text-white hover:bg-primary rounded-lg transition-colors text-left">
+                        🇲🇽 Español
+                    </button>
+                    <button onclick="changeLanguage('en')" class="block w-full px-4 py-3 text-white hover:bg-primary rounded-lg transition-colors text-left">
+                        🇺🇸 English
+                    </button>
+                </div>
+            </div>
+        </div>
+    </nav>
 
-    <section id="sobre-nosotros" class="about-section">
-        <div class="container" data-aos="fade-up">
-            <div class="history">
-                <h2 class="titulo-historia">Nuestra Historia</h2> 
-                <p>En GESTRAVER, celebramos con orgullo nuestro cuarto aniversario, un hito que marca cuatro años de innovación constante y excelencia inquebrantable en el apasionante mundo de la logística. Desde nuestros primeros pasos, hemos afrontado cada desafío como un trampolín hacia el crecimiento, transformando radicalmente la forma en que concebimos y ejecutamos soluciones logísticas integrales.</p>
-                <p>Nuestra trayectoria ha sido un viaje emocionante, lleno de aprendizajes y logros significativos. Hemos superado obstáculos, explorado nuevos horizontes y construido relaciones sólidas con clientes y socios que comparten nuestra pasión por la eficiencia y la calidad en cada eslabón de la cadena de suministro.</p>
-                <p>En estos años, hemos sido testigos de cómo nuestras ideas se han materializado en proyectos exitosos, impactando positivamente a diversas industrias y contribuyendo al desarrollo económico de nuestra comunidad. Hemos invertido en tecnología de vanguardia, optimizado procesos y fomentado el talento de nuestro equipo, consolidando así nuestra posición como un referente en el sector logístico.</p>
-                <p>¡Juntos, seguiremos construyendo un futuro más eficiente, sostenible y conectado para la logística!</p>
+    <!-- Hero Section -->
+    <section class="relative pt-32 pb-16 bg-gradient-to-br from-dark via-secondary to-dark overflow-hidden">
+        <div class="absolute inset-0 opacity-10">
+            <div class="absolute top-20 left-10 w-72 h-72 bg-primary rounded-full filter blur-3xl"></div>
+            <div class="absolute bottom-20 right-10 w-96 h-96 bg-accent rounded-full filter blur-3xl"></div>
+        </div>
+        <div class="container mx-auto px-4 lg:px-8 relative z-10">
+            <div class="max-w-4xl mx-auto text-center">
+                <div class="inline-block mb-6">
+                    <div class="w-20 h-20 mx-auto bg-gradient-to-br from-primary to-accent rounded-2xl flex items-center justify-center transform rotate-12">
+                        <i class="fas fa-building text-4xl text-white transform -rotate-12"></i>
+                    </div>
+                </div>
+                <h1 class="text-4xl md:text-6xl font-display text-white mb-4 tracking-wider" data-translate="about-hero-title">
+                    Sobre Nosotros
+                </h1>
+                <div class="h-1 w-32 bg-primary mx-auto mb-6"></div>
+                <p class="text-xl text-gray-300 max-w-2xl mx-auto" data-translate="about-hero-subtitle">
+                    4 años de innovación, excelencia y compromiso en logística
+                </p>
             </div>
         </div>
     </section>
-    <div class="experience-section" data-aos="fade-down">
-        <h2>Experiencia</h2>
-        <div class="experience-items">
-            <div class="experience-item">
-                <i class="fas fa-user-tie"></i>
-                <p>Atención personalizada</p>
-            </div>
-            <div class="experience-item">
-                <i class="fas fa-graduation-cap"></i>
-                <p>Actualización profesional continua</p>
-            </div>
-            <div class="experience-item">
-                <i class="fas fa-search-dollar"></i>
-                <p>Supervisión en los procesos</p>
-            </div>
-            <div class="experience-item">
-                <i class="fas fa-coins"></i>
-                <p>Costos competitivos</p>
+
+    <!-- Our History Section -->
+    <section class="py-20 md:py-32 bg-white">
+        <div class="container mx-auto px-4 lg:px-8">
+            <div class="max-w-5xl mx-auto">
+                <div class="text-center mb-16 animate-on-scroll">
+                    <span class="text-primary font-semibold tracking-wider uppercase text-sm" data-translate="history-label">Nuestra Trayectoria</span>
+                    <h2 class="text-4xl md:text-6xl font-display mt-4 mb-6 text-secondary" data-translate="history-title">
+                        Nuestra Historia
+                    </h2>
+                    <div class="h-1 w-20 bg-primary mx-auto"></div>
+                </div>
+
+                <div class="relative border-l-4 border-primary pl-8 ml-4 space-y-12">
+                    <!-- Year Badge -->
+                    <div class="absolute -left-16 top-0 bg-gradient-to-br from-primary to-accent text-white px-6 py-3 rounded-2xl font-display text-2xl shadow-lg">
+                        2021-2025
+                    </div>
+
+                    <div class="animate-on-scroll relative">
+                        <div class="timeline-dot"></div>
+                        <div class="bg-gradient-to-r from-red-50 to-orange-50 rounded-2xl p-8 shadow-lg border-l-4 border-primary">
+                            <p class="text-lg text-gray-700 leading-relaxed" data-translate="history-text-1">
+                                En GESTRAVER, celebramos con orgullo nuestro cuarto aniversario, un hito que marca cuatro años de innovación constante y excelencia inquebrantable en el apasionante mundo de la logística. Desde nuestros primeros pasos, hemos afrontado cada desafío como un trampolín hacia el crecimiento, transformando radicalmente la forma en que concebimos y ejecutamos soluciones logísticas integrales.
+                            </p>
+                        </div>
+                    </div>
+
+                    <div class="animate-on-scroll relative">
+                        <div class="timeline-dot"></div>
+                        <div class="bg-white rounded-2xl p-8 shadow-lg border-l-4 border-accent">
+                            <p class="text-lg text-gray-700 leading-relaxed" data-translate="history-text-2">
+                                Nuestra trayectoria ha sido un viaje emocionante, lleno de aprendizajes y logros significativos. Hemos superado obstáculos, explorado nuevos horizontes y construido relaciones sólidas con clientes y socios que comparten nuestra pasión por la eficiencia y la calidad en cada eslabón de la cadena de suministro.
+                            </p>
+                        </div>
+                    </div>
+
+                    <div class="animate-on-scroll relative">
+                        <div class="timeline-dot"></div>
+                        <div class="bg-gradient-to-r from-orange-50 to-red-50 rounded-2xl p-8 shadow-lg border-l-4 border-primary">
+                            <p class="text-lg text-gray-700 leading-relaxed" data-translate="history-text-3">
+                                En estos años, hemos sido testigos de cómo nuestras ideas se han materializado en proyectos exitosos, impactando positivamente a diversas industrias y contribuyendo al desarrollo económico de nuestra comunidad. Hemos invertido en tecnología de vanguardia, optimizado procesos y fomentado el talento de nuestro equipo, consolidando así nuestra posición como un referente en el sector logístico.
+                            </p>
+                        </div>
+                    </div>
+
+                    <div class="animate-on-scroll relative">
+                        <div class="timeline-dot"></div>
+                        <div class="bg-gradient-to-br from-primary/10 to-accent/10 rounded-2xl p-8 shadow-lg border-l-4 border-accent border-dashed">
+                            <p class="text-xl text-secondary leading-relaxed font-semibold" data-translate="history-text-4">
+                                ¡Juntos, seguiremos construyendo un futuro más eficiente, sostenible y conectado para la logística!
+                            </p>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
-    </div>
-    <div class="section-mision-vision">
-        <div class="card-container">
-            <div class="card" data-aos="fade-right">
-                <i class="icon fas fa-paper-plane"></i>
-                <h3>Misión</h3>
-                <p>Ante la complejidad de los tiempos actuales
-                    en el transporte, asumimos este nuevo reto,
-                    que demandarán mayor preocupación,
-                    esfuerzo y conocimiento profundo de los
-                    tramites de cada cliente y de su situación.</p>
+    </section>
+
+    <!-- Experience Section -->
+    <section class="py-20 md:py-32 bg-gradient-to-br from-dark via-secondary to-dark">
+        <div class="container mx-auto px-4 lg:px-8">
+            <div class="text-center mb-16 animate-on-scroll">
+                <span class="text-accent font-semibold tracking-wider uppercase text-sm" data-translate="experience-label">Lo Que Nos Diferencia</span>
+                <h2 class="text-4xl md:text-6xl font-display mt-4 mb-6 text-white" data-translate="experience-title">
+                    Experiencia
+                </h2>
+                <div class="h-1 w-20 bg-primary mx-auto"></div>
             </div>
-            <div class="card" data-aos="fade-left">
-                <i class="icon fas fa-eye"></i>
-                <h3>Visión</h3>
-                <p>Nuestro modelo apuesta por ser una sociedad
-                    de referencia, capaz de dar soluciones
-                    legales, de calidad, eficaz y personalizada en
-                    un mundo globalizado.</p>
+
+            <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-8 max-w-6xl mx-auto">
+                <!-- Experience Item 1 -->
+                <div class="animate-on-scroll card-hover bg-white/5 backdrop-blur-sm border border-white/10 rounded-2xl p-8 text-center">
+                    <div class="w-20 h-20 mx-auto mb-6 bg-gradient-to-br from-primary to-accent rounded-2xl flex items-center justify-center transform hover:rotate-12 transition-transform">
+                        <i class="fas fa-user-tie text-4xl text-white"></i>
+                    </div>
+                    <h3 class="text-xl font-semibold text-white mb-3" data-translate="exp-1-title">Atención Personalizada</h3>
+                    <p class="text-gray-300" data-translate="exp-1-text">Cada cliente es único y merece soluciones a medida</p>
+                </div>
+
+                <!-- Experience Item 2 -->
+                <div class="animate-on-scroll card-hover bg-white/5 backdrop-blur-sm border border-white/10 rounded-2xl p-8 text-center" style="animation-delay: 0.1s;">
+                    <div class="w-20 h-20 mx-auto mb-6 bg-gradient-to-br from-primary to-accent rounded-2xl flex items-center justify-center transform hover:rotate-12 transition-transform">
+                        <i class="fas fa-graduation-cap text-4xl text-white"></i>
+                    </div>
+                    <h3 class="text-xl font-semibold text-white mb-3" data-translate="exp-2-title">Actualización Continua</h3>
+                    <p class="text-gray-300" data-translate="exp-2-text">Capacitación profesional constante de nuestro equipo</p>
+                </div>
+
+                <!-- Experience Item 3 -->
+                <div class="animate-on-scroll card-hover bg-white/5 backdrop-blur-sm border border-white/10 rounded-2xl p-8 text-center" style="animation-delay: 0.2s;">
+                    <div class="w-20 h-20 mx-auto mb-6 bg-gradient-to-br from-primary to-accent rounded-2xl flex items-center justify-center transform hover:rotate-12 transition-transform">
+                        <i class="fas fa-search-dollar text-4xl text-white"></i>
+                    </div>
+                    <h3 class="text-xl font-semibold text-white mb-3" data-translate="exp-3-title">Supervisión Total</h3>
+                    <p class="text-gray-300" data-translate="exp-3-text">Control riguroso en cada etapa del proceso</p>
+                </div>
+
+                <!-- Experience Item 4 -->
+                <div class="animate-on-scroll card-hover bg-white/5 backdrop-blur-sm border border-white/10 rounded-2xl p-8 text-center" style="animation-delay: 0.3s;">
+                    <div class="w-20 h-20 mx-auto mb-6 bg-gradient-to-br from-primary to-accent rounded-2xl flex items-center justify-center transform hover:rotate-12 transition-transform">
+                        <i class="fas fa-coins text-4xl text-white"></i>
+                    </div>
+                    <h3 class="text-xl font-semibold text-white mb-3" data-translate="exp-4-title">Costos Competitivos</h3>
+                    <p class="text-gray-300" data-translate="exp-4-text">Tarifas justas sin comprometer la calidad</p>
+                </div>
             </div>
         </div>
-    </div>
-    <footer>
-        <div class="footer-container">
-            <div class="footer-section logo">
-                <img src="IMG/GESTRAVER.jpg" alt="Logo de GESTRAVER">
-                <p>GESTIONES DE TRAFICO VERACRUZ</p>
-            </div>
-    
-                
-            <div class="footer-section">
-                <h4>Avisos</h4> 
-                <ul>
-                    <li><a href="#" target="_blank">Aviso de Privacidad</a></li>
-                    <li><a href="#" target="_blank">Terminos y condiciones</a></li>
-                </ul>
+    </section>
+
+    <!-- Mission & Vision Section -->
+    <section class="py-20 md:py-32 bg-gray-50">
+        <div class="container mx-auto px-4 lg:px-8">
+            <div class="max-w-6xl mx-auto">
+                <div class="grid md:grid-cols-2 gap-8 lg:gap-12">
+                    <!-- Mission Card -->
+                    <div class="animate-on-scroll card-hover bg-white rounded-2xl shadow-xl overflow-hidden border-t-8 border-primary">
+                        <div class="bg-gradient-to-br from-primary to-red-700 p-8 text-center">
+                            <div class="w-20 h-20 mx-auto bg-white rounded-2xl flex items-center justify-center mb-4 shadow-lg">
+                                <i class="fas fa-paper-plane text-4xl text-primary"></i>
+                            </div>
+                            <h3 class="text-3xl font-display text-white tracking-wider" data-translate="mission-title">Misión</h3>
+                        </div>
+                        <div class="p-8 lg:p-10">
+                            <p class="text-lg text-gray-700 leading-relaxed" data-translate="mission-text">
+                                Ante la complejidad de los tiempos actuales en el transporte, asumimos este nuevo reto, que demandarán mayor preocupación, esfuerzo y conocimiento profundo de los trámites de cada cliente y de su situación.
+                            </p>
+                        </div>
+                    </div>
+
+                    <!-- Vision Card -->
+                    <div class="animate-on-scroll card-hover bg-white rounded-2xl shadow-xl overflow-hidden border-t-8 border-accent" style="animation-delay: 0.1s;">
+                        <div class="bg-gradient-to-br from-accent to-orange-700 p-8 text-center">
+                            <div class="w-20 h-20 mx-auto bg-white rounded-2xl flex items-center justify-center mb-4 shadow-lg">
+                                <i class="fas fa-eye text-4xl text-accent"></i>
+                            </div>
+                            <h3 class="text-3xl font-display text-white tracking-wider" data-translate="vision-title">Visión</h3>
+                        </div>
+                        <div class="p-8 lg:p-10">
+                            <p class="text-lg text-gray-700 leading-relaxed" data-translate="vision-text">
+                                Nuestro modelo apuesta por ser una sociedad de referencia, capaz de dar soluciones legales, de calidad, eficaz y personalizada en un mundo globalizado.
+                            </p>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
-    
-        <div class="footer-copyright">
-            <p>&copy; 2024 GESTRAVER. Todos los derechos reservados.</p>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="py-16 bg-gradient-to-r from-primary to-accent">
+        <div class="container mx-auto px-4 lg:px-8 text-center">
+            <h2 class="text-3xl md:text-5xl font-display text-white mb-6" data-translate="cta-title">
+                ¿Listo para trabajar con nosotros?
+            </h2>
+            <p class="text-xl text-white/90 mb-8 max-w-2xl mx-auto" data-translate="cta-subtitle">
+                Descubre cómo podemos impulsar tu negocio con nuestras soluciones logísticas
+            </p>
+            <a href="index.html#contacto" class="inline-flex items-center px-8 py-4 bg-white text-primary font-semibold rounded-lg hover:bg-gray-100 transition-all shadow-xl hover:shadow-2xl transform hover:scale-105">
+                <span data-translate="cta-button">Contáctanos Ahora</span>
+                <svg class="w-5 h-5 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"></path>
+                </svg>
+            </a>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-dark text-white py-12">
+        <div class="container mx-auto px-4 lg:px-8">
+            <div class="grid md:grid-cols-2 gap-8 mb-8">
+                <div>
+                    <div class="flex items-center space-x-3 mb-4">
+                        <img src="IMG/GESTRAVER.jpg" alt="Logo GESTRAVER" class="h-16 w-16 rounded-lg">
+                        <div>
+                            <h3 class="text-2xl font-display">GESTRAVER</h3>
+                            <p class="text-gray-400 text-sm">Gestiones de Tráfico Veracruz</p>
+                        </div>
+                    </div>
+                </div>
+                <div>
+                    <h4 class="text-lg font-semibold mb-4" data-translate="footer-notices">Avisos</h4>
+                    <ul class="space-y-2">
+                        <li>
+                            <a href="Aviso.html" class="text-gray-400 hover:text-primary transition-colors" data-translate="footer-privacy">Aviso de Privacidad</a>
+                        </li>
+                        <li>
+                            <a href="#" class="text-gray-400 hover:text-primary transition-colors" data-translate="footer-terms">Términos y Condiciones</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            <div class="border-t border-gray-800 pt-8 text-center text-gray-400">
+                <p>&copy; 2024 GESTRAVER. <span data-translate="footer-rights">Todos los derechos reservados.</span></p>
+            </div>
         </div>
     </footer>
-    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.js"></script>
-    <script>
-        AOS.init();
 
-        $('#imageModal').on('show.bs.modal', function (event) {
-            var button = $(event.relatedTarget);
-            var imageSrc = button.data('image');
-            var modal = $(this);
-            modal.find('#modalImage').attr('src', imageSrc);
+    <script>
+        // Translation System
+        const translations = {
+            es: {
+                // Navigation
+                'nav-inicio': 'Inicio',
+                'nav-nosotros': 'Nosotros',
+                'nav-servicios': 'Servicios',
+                'nav-trabajos': 'Trabajos',
+                'nav-galeria': 'Galería',
+                'nav-contacto': 'Contacto',
+                
+                // About Hero
+                'about-hero-title': 'Sobre Nosotros',
+                'about-hero-subtitle': '4 años de innovación, excelencia y compromiso en logística',
+                
+                // History
+                'history-label': 'Nuestra Trayectoria',
+                'history-title': 'Nuestra Historia',
+                'history-text-1': 'En GESTRAVER, celebramos con orgullo nuestro cuarto aniversario, un hito que marca cuatro años de innovación constante y excelencia inquebrantable en el apasionante mundo de la logística. Desde nuestros primeros pasos, hemos afrontado cada desafío como un trampolín hacia el crecimiento, transformando radicalmente la forma en que concebimos y ejecutamos soluciones logísticas integrales.',
+                'history-text-2': 'Nuestra trayectoria ha sido un viaje emocionante, lleno de aprendizajes y logros significativos. Hemos superado obstáculos, explorado nuevos horizontes y construido relaciones sólidas con clientes y socios que comparten nuestra pasión por la eficiencia y la calidad en cada eslabón de la cadena de suministro.',
+                'history-text-3': 'En estos años, hemos sido testigos de cómo nuestras ideas se han materializado en proyectos exitosos, impactando positivamente a diversas industrias y contribuyendo al desarrollo económico de nuestra comunidad. Hemos invertido en tecnología de vanguardia, optimizado procesos y fomentado el talento de nuestro equipo, consolidando así nuestra posición como un referente en el sector logístico.',
+                'history-text-4': '¡Juntos, seguiremos construyendo un futuro más eficiente, sostenible y conectado para la logística!',
+                
+                // Experience
+                'experience-label': 'Lo Que Nos Diferencia',
+                'experience-title': 'Experiencia',
+                'exp-1-title': 'Atención Personalizada',
+                'exp-1-text': 'Cada cliente es único y merece soluciones a medida',
+                'exp-2-title': 'Actualización Continua',
+                'exp-2-text': 'Capacitación profesional constante de nuestro equipo',
+                'exp-3-title': 'Supervisión Total',
+                'exp-3-text': 'Control riguroso en cada etapa del proceso',
+                'exp-4-title': 'Costos Competitivos',
+                'exp-4-text': 'Tarifas justas sin comprometer la calidad',
+                
+                // Mission & Vision
+                'mission-title': 'Misión',
+                'mission-text': 'Ante la complejidad de los tiempos actuales en el transporte, asumimos este nuevo reto, que demandarán mayor preocupación, esfuerzo y conocimiento profundo de los trámites de cada cliente y de su situación.',
+                'vision-title': 'Visión',
+                'vision-text': 'Nuestro modelo apuesta por ser una sociedad de referencia, capaz de dar soluciones legales, de calidad, eficaz y personalizada en un mundo globalizado.',
+                
+                // CTA
+                'cta-title': '¿Listo para trabajar con nosotros?',
+                'cta-subtitle': 'Descubre cómo podemos impulsar tu negocio con nuestras soluciones logísticas',
+                'cta-button': 'Contáctanos Ahora',
+                
+                // Footer
+                'footer-notices': 'Avisos',
+                'footer-privacy': 'Aviso de Privacidad',
+                'footer-terms': 'Términos y Condiciones',
+                'footer-rights': 'Todos los derechos reservados.',
+            },
+            en: {
+                // Navigation
+                'nav-inicio': 'Home',
+                'nav-nosotros': 'About Us',
+                'nav-servicios': 'Services',
+                'nav-trabajos': 'Work',
+                'nav-galeria': 'Gallery',
+                'nav-contacto': 'Contact',
+                
+                // About Hero
+                'about-hero-title': 'About Us',
+                'about-hero-subtitle': '4 years of innovation, excellence and commitment in logistics',
+                
+                // History
+                'history-label': 'Our Journey',
+                'history-title': 'Our History',
+                'history-text-1': 'At GESTRAVER, we proudly celebrate our fourth anniversary, a milestone that marks four years of constant innovation and unwavering excellence in the exciting world of logistics. From our first steps, we have faced each challenge as a springboard for growth, radically transforming the way we conceive and execute comprehensive logistics solutions.',
+                'history-text-2': 'Our trajectory has been an exciting journey, full of significant learnings and achievements. We have overcome obstacles, explored new horizons and built solid relationships with clients and partners who share our passion for efficiency and quality in every link of the supply chain.',
+                'history-text-3': 'In these years, we have witnessed how our ideas have materialized into successful projects, positively impacting various industries and contributing to the economic development of our community. We have invested in cutting-edge technology, optimized processes and fostered the talent of our team, thus consolidating our position as a benchmark in the logistics sector.',
+                'history-text-4': 'Together, we will continue building a more efficient, sustainable and connected future for logistics!',
+                
+                // Experience
+                'experience-label': 'What Sets Us Apart',
+                'experience-title': 'Experience',
+                'exp-1-title': 'Personalized Attention',
+                'exp-1-text': 'Each client is unique and deserves tailored solutions',
+                'exp-2-title': 'Continuous Training',
+                'exp-2-text': 'Constant professional development of our team',
+                'exp-3-title': 'Total Supervision',
+                'exp-3-text': 'Rigorous control at every stage of the process',
+                'exp-4-title': 'Competitive Costs',
+                'exp-4-text': 'Fair rates without compromising quality',
+                
+                // Mission & Vision
+                'mission-title': 'Mission',
+                'mission-text': 'Facing the complexity of current times in transportation, we take on this new challenge, which will demand greater concern, effort and deep knowledge of each client\'s procedures and situation.',
+                'vision-title': 'Vision',
+                'vision-text': 'Our model aims to be a reference society, capable of providing legal, quality, effective and personalized solutions in a globalized world.',
+                
+                // CTA
+                'cta-title': 'Ready to work with us?',
+                'cta-subtitle': 'Discover how we can boost your business with our logistics solutions',
+                'cta-button': 'Contact Us Now',
+                
+                // Footer
+                'footer-notices': 'Notices',
+                'footer-privacy': 'Privacy Policy',
+                'footer-terms': 'Terms and Conditions',
+                'footer-rights': 'All rights reserved.',
+            }
+        };
+
+        let currentLanguage = 'es';
+
+        function changeLanguage(lang) {
+            currentLanguage = lang;
+            document.getElementById('current-lang').textContent = lang.toUpperCase();
+            document.querySelectorAll('[data-translate]').forEach(element => {
+                const key = element.getAttribute('data-translate');
+                if (translations[lang][key]) {
+                    element.textContent = translations[lang][key];
+                }
+            });
+            localStorage.setItem('preferredLanguage', lang);
+        }
+
+        window.addEventListener('DOMContentLoaded', () => {
+            const savedLang = localStorage.getItem('preferredLanguage');
+            if (savedLang && savedLang !== 'es') {
+                changeLanguage(savedLang);
+            }
+        });
+
+        const mobileMenuBtn = document.getElementById('mobile-menu-btn');
+        const mobileMenu = document.getElementById('mobile-menu');
+        mobileMenuBtn.addEventListener('click', () => {
+            mobileMenu.classList.toggle('hidden');
+        });
+
+        // Scroll Animation
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('.animate-on-scroll').forEach(el => {
+            observer.observe(el);
         });
     </script>
 </body>

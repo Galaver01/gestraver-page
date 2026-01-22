@@ -1,192 +1,679 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es" class="scroll-smooth">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Aviso de Privacidad</title>
-    <link rel="stylesheet" href="styles.css">
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.css">
+    <title>Aviso de Privacidad - GESTRAVER</title>
     <link rel="icon" href="IMG/GESTRAVER.jpg" type="image/x-icon">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Outfit:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        primary: '#DC2626',
+                        secondary: '#1E293B',
+                        accent: '#F59E0B',
+                        dark: '#0F172A',
+                    },
+                    fontFamily: {
+                        'display': ['Bebas Neue', 'sans-serif'],
+                        'body': ['Outfit', 'sans-serif'],
+                    },
+                }
+            }
+        }
+    </script>
     <style>
-    /* Nuevo estilo moderno para el aviso de privacidad en tonos rojos */
-    body {
-      background: linear-gradient(135deg, #fff1f1 0%, #fde8e8 100%);
-      min-height: 100vh;
-    }
-    .aviso-privacidad {
-      max-width: 900px;
-      margin: 0 auto;
-      font-size: 1.08rem;
-      line-height: 1.7;
-      background: rgba(255,255,255,0.92);
-      border-left: 8px solid #d30303;
-      border-radius: 18px;
-      box-shadow: 0 8px 32px rgba(211,3,3,0.13);
-      padding: 2.5rem 2rem;
-      position: relative;
-      margin-bottom: 3rem;
-    }
-    .aviso-privacidad h1, .aviso-privacidad h2, .aviso-privacidad h5 {
-      font-family: 'Segoe UI', Arial, sans-serif;
-      color: #d30303;
-    }
-    .aviso-privacidad h1 {
-      font-size: 2.2rem;
-      font-weight: 700;
-      letter-spacing: 1px;
-      margin-bottom: 2rem;
-    }
-    .aviso-privacidad h2 {
-      font-size: 1.4rem;
-      margin-top: 2.5rem;
-      margin-bottom: 1rem;
-      font-weight: 600;
-      border-left: 4px solid #d30303;
-      padding-left: 10px;
-      background: linear-gradient(90deg, #fff1f1 60%, transparent 100%);
-      border-radius: 6px;
-    }
-    .aviso-privacidad h5 {
-      font-size: 1.15rem;
-      margin-top: 1.5rem;
-      color: #a50202;
-      font-weight: 600;
-    }
-    .aviso-privacidad ul {
-      padding-left: 1.2em;
-    }
-    .aviso-privacidad ul.mb-3 {
-      margin-bottom: 1.5rem;
-    }
-    .aviso-privacidad .list-group-item {
-      border: none;
-      border-left: 4px solid #d30303;
-      background: #fde8e8;
-      margin-bottom: 8px;
-      border-radius: 0 12px 12px 0;
-      font-size: 1rem;
-      transition: background 0.2s, box-shadow 0.2s;
-      position: relative;
-      padding-left: 2.2em;
-    }
-    .aviso-privacidad .list-group-item:before {
-      content: '\1F4C4'; /* icono documento */
-      position: absolute;
-      left: 0.7em;
-      top: 0.7em;
-      font-size: 1.1em;
-      color: #d30303;
-      opacity: 0.7;
-    }
-    .aviso-privacidad .list-group-item:hover {
-      background: #fff1f1;
-      box-shadow: 0 2px 8px rgba(211,3,3,0.08);
-    }
-    .aviso-privacidad a {
-      color: #d30303;
-      text-decoration: underline;
-      transition: color 0.2s;
-    }
-    .aviso-privacidad a:hover {
-      color: #a50202;
-    }
-    @media (max-width: 600px) {
-      .aviso-privacidad {
-        padding: 1.2rem !important;
-        font-size: 0.98rem;
-        border-left-width: 4px;
-      }
-      .aviso-privacidad h1 {
-        font-size: 1.3rem;
-      }
-      .aviso-privacidad h2 {
-        font-size: 1.08rem;
-      }
-    }
+        .nav-blur {
+            backdrop-filter: blur(12px);
+            background-color: rgba(15, 23, 42, 0.9);
+        }
+        .animate-fade-in {
+            animation: fadeIn 0.8s ease-in-out;
+        }
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        .privacy-section {
+            scroll-margin-top: 100px;
+        }
+        .language-dropdown {
+            display: none;
+        }
+        .language-selector:hover .language-dropdown {
+            display: block;
+        }
     </style>
 </head>
-<body>
-    <header class="navbar navbar-expand-lg navbar-custom fixed-top">
-        <a class="navbar-brand" href="#"><img src="IMG/GESTRAVER.jpg" alt="Logo" class="logo"></a>
-        <span class="ml-3 h4 mb-0 text-white">GESTRAVER</span>
-        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav">
-            <span class="navbar-toggler-icon"></span>
-        </button>
-        <div class="collapse navbar-collapse" id="navbarNav">
-            <ul class="navbar-nav ml-auto">
-                <li class="nav-item"><a href="index.html" class="nav-link">Inicio</a></li>
-                <li class="nav-item"><a href="about.html" class="nav-link">Sobre Nosotros</a></li>
-                <li class="nav-item dropdown">
-                    <a href="#" class="nav-link dropdown-toggle" id="serviciosDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Servicios</a>
-                    <div class="dropdown-menu" aria-labelledby="serviciosDropdown">
-                        <a class="dropdown-item" href="Servicios-Aduanales.html">Servicios Aduanales</a>
-                        <a class="dropdown-item" href="Transporte.html">Transporte Terrestre</a>
-                        <a class="dropdown-item" href="Forward.html">Freight Forwarding</a>
+<body class="font-body bg-gray-50 text-gray-900">
+    
+    <!-- Navbar -->
+    <nav id="navbar" class="fixed w-full z-50 transition-all duration-300 nav-blur shadow-lg">
+        <div class="container mx-auto px-4 lg:px-8">
+            <div class="flex items-center justify-between h-20">
+                <!-- Logo -->
+                <a href="index.html" class="flex items-center space-x-3 group">
+                    <img src="IMG/GESTRAVER.jpg" alt="Logo GESTRAVER" class="h-12 w-12 rounded-lg shadow-lg transition-transform group-hover:scale-110">
+                    <span class="text-2xl font-display text-white tracking-wider">GESTRAVER</span>
+                </a>
+                
+                <!-- Desktop Menu -->
+                <div class="hidden lg:flex items-center space-x-1">
+                    <a href="index.html" class="px-4 py-2 text-white hover:text-primary transition-colors font-medium" data-translate="nav-inicio">Inicio</a>
+                    <a href="index.html#sobre-nosotros" class="px-4 py-2 text-white hover:text-primary transition-colors font-medium" data-translate="nav-nosotros">Nosotros</a>
+                    <div class="relative group">
+                        <button class="px-4 py-2 text-white hover:text-primary transition-colors font-medium flex items-center">
+                            <span data-translate="nav-servicios">Servicios</span>
+                            <svg class="w-4 h-4 ml-1 transition-transform group-hover:rotate-180" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
+                            </svg>
+                        </button>
+                        <div class="absolute top-full left-0 w-56 bg-white rounded-lg shadow-2xl opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300 mt-2">
+                            <a href="Servicios-Aduanales.html" class="block px-6 py-3 text-gray-700 hover:bg-primary hover:text-white transition-colors">Servicios Aduanales</a>
+                            <a href="Transporte.html" class="block px-6 py-3 text-gray-700 hover:bg-primary hover:text-white transition-colors">Transporte Terrestre</a>
+                            <a href="Forward.html" class="block px-6 py-3 text-gray-700 hover:bg-primary hover:text-white transition-colors rounded-b-lg">Freight Forwarding</a>
+                        </div>
                     </div>
-                </li>
-                <li class="nav-item"><a href="#trabajos" class="nav-link">Trabajos</a></li>
-                <li class="nav-item"><a href="#galeria" class="nav-link">Galería</a></li>
-                <li class="nav-item"><a href="#contacto" class="nav-link">Contacto</a></li>
-            </ul>
+                    <a href="index.html#trabajos" class="px-4 py-2 text-white hover:text-primary transition-colors font-medium" data-translate="nav-trabajos">Trabajos</a>
+                    <a href="index.html#galeria" class="px-4 py-2 text-white hover:text-primary transition-colors font-medium" data-translate="nav-galeria">Galería</a>
+                    <a href="index.html#contacto" class="px-4 py-2 bg-primary text-white rounded-lg hover:bg-red-700 transition-all font-semibold ml-4" data-translate="nav-contacto">Contacto</a>
+                    
+                    <!-- Language Selector -->
+                    <div class="language-selector ml-2 relative">
+                        <button class="px-3 py-2 text-white hover:text-primary transition-colors flex items-center gap-2">
+                            <i class="fas fa-globe"></i>
+                            <span id="current-lang">ES</span>
+                            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
+                            </svg>
+                        </button>
+                        <div class="language-dropdown absolute top-full right-0 mt-2 bg-white rounded-lg shadow-2xl overflow-hidden min-w-[150px]">
+                            <div onclick="changeLanguage('es')" class="px-4 py-3 cursor-pointer hover:bg-primary hover:text-white transition-colors flex items-center gap-2">
+                                <span>🇲🇽</span>
+                                <span>Español</span>
+                            </div>
+                            <div onclick="changeLanguage('en')" class="px-4 py-3 cursor-pointer hover:bg-primary hover:text-white transition-colors flex items-center gap-2">
+                                <span>🇺🇸</span>
+                                <span>English</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Mobile Menu Button -->
+                <button id="mobile-menu-btn" class="lg:hidden text-white focus:outline-none">
+                    <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
+                    </svg>
+                </button>
+            </div>
         </div>
-    </header>
-    <main class="container my-5" style="margin-top: 120px !important;">
-        <div data-aos="fade-up" data-aos-duration="1200" class="bg-white p-4 p-md-5 rounded shadow-lg aviso-privacidad">
-            <h1 class="section-title mb-4 text-center text-danger">Aviso de Privacidad para Gestraver.com</h1>
-            <p><strong>Veracruz, México a 4 de agosto de 2025.</strong> - En cumplimiento con la Ley Federal de Protección de Datos Personales en Posesión de los Particulares (LFPDPPP) y su Reglamento, Gestraver Logist S.A. de C.V. (en adelante "Gestraver"), con domicilio en Circuito 8 #498, Veracruz, 91808, presenta su aviso de privacidad para el sitio web <a href="https://gestraver.com/" target="_blank">https://gestraver.com/</a>.</p>
-            <p>Este documento tiene como finalidad informar a los usuarios sobre el tratamiento que se da a sus datos personales cuando son recabados, utilizados, almacenados y/o transferidos por Gestraver, garantizando en todo momento los principios de licitud, consentimiento, información, calidad, finalidad, lealtad, proporcionalidad y responsabilidad en el tratamiento de los mismos.</p>
-            <h2 class="mt-4 text-danger">Identidad y Domicilio del Responsable</h2>
-            <p>Gestraver Logist S.A. de C.V. es la entidad responsable del tratamiento de sus datos personales. Para cualquier asunto relacionado con este aviso de privacidad, puede contactarnos a través del correo electrónico: <a href="mailto:direccion@gestraver.com">direccion@gestraver.com</a> y/o <a href="mailto:ger.operaciones@gestraver.com">ger.operaciones@gestraver.com</a>, o al teléfono <a href="tel:2299505574">2299505574</a>.</p>
-            <h2 class="mt-4 text-danger">Datos Personales que se Recaban</h2>
-            <p>Gestraver podrá recabar los siguientes datos personales de los usuarios a través de su sitio web y otros medios de contacto:</p>
-            <ul class="list-group mb-3">
-                <li class="list-group-item"><strong>Datos de identificación:</strong> Nombre completo, domicilio, teléfono particular o de oficina, correo electrónico, firma autógrafa, Registro Federal de Contribuyentes (RFC), Clave Única de Registro de Población (CURP).</li>
-                <li class="list-group-item"><strong>Datos laborales:</strong> Puesto o cargo que desempeña, domicilio de trabajo, correo electrónico institucional, teléfono institucional.</li>
-                <li class="list-group-item"><strong>Datos de facturación:</strong> Razón social, domicilio fiscal, RFC, datos de cuentas bancarias para pago.</li>
-                <li class="list-group-item"><strong>Datos personales sensibles:</strong> Gestraver no recaba datos personales considerados como sensibles a través de su sitio web.</li>
-            </ul>
-            <h2 class="mt-4 text-danger">Finalidades del Tratamiento de Datos Personales</h2>
-            <p>Los datos personales que recabamos serán utilizados para las siguientes finalidades, las cuales son necesarias para el servicio que solicita:</p>
-            <h5 class="text-primary">Finalidades Primarias:</h5>
-            <ul class="mb-3">
-                <li>Proveer los servicios de comercio exterior, logística y transporte solicitados.</li>
-                <li>Realizar cotizaciones y enviar propuestas de servicios.</li>
-                <li>Gestionar la facturación y el cobro de los servicios prestados.</li>
-                <li>Establecer comunicación para el seguimiento de los servicios contratados.</li>
-                <li>Cumplir con las obligaciones legales y regulatorias aplicables en materia de comercio exterior y transporte.</li>
-                <li>Integrar y mantener actualizada una base de datos de clientes.</li>
-            </ul>
-            <h5 class="text-primary">Finalidades Secundarias:</h5>
-            <ul class="mb-3">
-                <li>Enviar comunicaciones con fines mercadotécnicos, publicitarios o de prospección comercial sobre nuevos servicios o promociones.</li>
-                <li>Realizar encuestas de satisfacción para mejorar la calidad de nuestros servicios.</li>
-            </ul>
-            <p>Si usted no desea que sus datos personales sean tratados para estas finalidades secundarias, puede manifestarlo desde este momento enviando un correo electrónico a la dirección antes mencionada.</p>
-            <h2 class="mt-4 text-danger">Transferencia de Datos Personales</h2>
-            <p>Gestraver podrá transferir sus datos personales a terceros, nacionales o extranjeros, que sean necesarios para la prestación de los servicios contratados, tales como agentes aduanales, líneas de transporte, y autoridades competentes en materia de comercio exterior. Estas transferencias se realizarán con todas las medidas de seguridad apropiadas y de conformidad con la LFPDPPP.</p>
-            <h2 class="mt-4 text-danger">Uso de Cookies y Tecnologías de Rastreo</h2>
-            <p>El sitio web de Gestraver utiliza cookies y otras tecnologías para mejorar la experiencia del usuario. Estas herramientas recaban información como su tipo de navegador, sistema operativo, y las páginas que visita dentro de nuestro sitio. Esta información es utilizada para fines estadísticos y para mejorar la funcionalidad del sitio. Usted puede deshabilitar el uso de estas tecnologías en la configuración de su navegador.</p>
-            <h2 class="mt-4 text-danger">Derechos ARCO (Acceso, Rectificación, Cancelación y Oposición)</h2>
-            <p>Usted tiene derecho a conocer qué datos personales tenemos de usted, para qué los utilizamos y las condiciones del uso que les damos (Acceso). Asimismo, es su derecho solicitar la corrección de su información personal en caso de que esté desactualizada, sea inexacta o incompleta (Rectificación); que la eliminemos de nuestros registros o bases de datos cuando considere que la misma no está siendo utilizada adecuadamente (Cancelación); así como oponerse al uso de sus datos personales para fines específicos (Oposición). Estos derechos se conocen como derechos ARCO.</p>
-            <p>Para el ejercicio de cualquiera de los derechos ARCO, usted deberá presentar la solicitud respectiva a través de un correo electrónico a <a href="mailto:direccion@gestraver.com">direccion@gestraver.com</a>, la cual deberá contener:</p>
-            <ul class="mb-3">
-                <li>Nombre del titular y domicilio u otro medio para comunicarle la respuesta a su solicitud.</li>
-                <li>Los documentos que acrediten la identidad o, en su caso, la representación legal del titular.</li>
-                <li>La descripción clara y precisa de los datos personales respecto de los que se busca ejercer alguno de los derechos antes mencionados.</li>
-                <li>Cualquier otro elemento o documento que facilite la localización de los datos personales.</li>
-            </ul>
-            <h2 class="mt-4 text-danger">Revocación del Consentimiento</h2>
-            <p>Usted puede revocar el consentimiento que, en su caso, nos haya otorgado para el tratamiento de sus datos personales. Sin embargo, es importante que tenga en cuenta que no en todos los casos podremos atender su solicitud o concluir el uso de forma inmediata, ya que es posible que por alguna obligación legal requiramos seguir tratando sus datos personales.</p>
-            <h2 class="mt-4 text-danger">Modificaciones al Aviso de Privacidad</h2>
-            <p>El presente aviso de privacidad puede sufrir modificaciones, cambios o actualizaciones derivadas de nuevos requerimientos legales; de nuestras propias necesidades por los productos o servicios que ofrecemos; de nuestras prácticas de privacidad; de cambios en nuestro modelo de negocio, o por otras causas.</p>
-            <p>Nos comprometemos a mantenerlo informado sobre los cambios que pueda sufrir el presente aviso de privacidad, a través de nuestro sitio web <a href="https://gestraver.com/" target="_blank">https://gestraver.com/</a>.</p>
+        
+        <!-- Mobile Menu -->
+        <div id="mobile-menu" class="hidden lg:hidden bg-secondary/95 backdrop-blur-lg">
+            <div class="container mx-auto px-4 py-4 space-y-2">
+                <a href="index.html" class="block px-4 py-3 text-white hover:bg-primary rounded-lg transition-colors" data-translate="nav-inicio">Inicio</a>
+                <a href="index.html#sobre-nosotros" class="block px-4 py-3 text-white hover:bg-primary rounded-lg transition-colors" data-translate="nav-nosotros">Nosotros</a>
+                <a href="Servicios-Aduanales.html" class="block px-4 py-3 text-white hover:bg-primary rounded-lg transition-colors">Servicios Aduanales</a>
+                <a href="Transporte.html" class="block px-4 py-3 text-white hover:bg-primary rounded-lg transition-colors">Transporte Terrestre</a>
+                <a href="Forward.html" class="block px-4 py-3 text-white hover:bg-primary rounded-lg transition-colors">Freight Forwarding</a>
+                <a href="index.html#trabajos" class="block px-4 py-3 text-white hover:bg-primary rounded-lg transition-colors" data-translate="nav-trabajos">Trabajos</a>
+                <a href="index.html#galeria" class="block px-4 py-3 text-white hover:bg-primary rounded-lg transition-colors" data-translate="nav-galeria">Galería</a>
+                <a href="index.html#contacto" class="block px-4 py-3 bg-primary text-white rounded-lg text-center font-semibold" data-translate="nav-contacto">Contacto</a>
+                
+                <!-- Language Selector Mobile -->
+                <div class="pt-2 border-t border-gray-700">
+                    <button onclick="changeLanguage('es')" class="block w-full px-4 py-3 text-white hover:bg-primary rounded-lg transition-colors text-left">
+                        🇲🇽 Español
+                    </button>
+                    <button onclick="changeLanguage('en')" class="block w-full px-4 py-3 text-white hover:bg-primary rounded-lg transition-colors text-left">
+                        🇺🇸 English
+                    </button>
+                </div>
+            </div>
         </div>
-    </main>
-    <script src="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.js"></script>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="relative pt-32 pb-16 bg-gradient-to-br from-dark via-secondary to-dark">
+        <div class="container mx-auto px-4 lg:px-8">
+            <div class="max-w-4xl mx-auto text-center animate-fade-in">
+                <div class="inline-block mb-6">
+                    <div class="w-20 h-20 mx-auto bg-gradient-to-br from-primary to-accent rounded-2xl flex items-center justify-center">
+                        <i class="fas fa-shield-alt text-4xl text-white"></i>
+                    </div>
+                </div>
+                <h1 class="text-4xl md:text-6xl font-display text-white mb-4 tracking-wider" data-translate="privacy-title">
+                    Aviso de Privacidad
+                </h1>
+                <div class="h-1 w-32 bg-primary mx-auto mb-6"></div>
+                <p class="text-xl text-gray-300" data-translate="privacy-subtitle">
+                    Gestraver.com
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Privacy Content -->
+    <section class="py-16 md:py-24">
+        <div class="container mx-auto px-4 lg:px-8">
+            <div class="max-w-4xl mx-auto">
+                
+                <!-- Introduction -->
+                <div class="bg-white rounded-2xl shadow-lg p-8 md:p-12 mb-8 border-l-4 border-primary">
+                    <p class="text-lg text-gray-700 leading-relaxed mb-6">
+                        <strong data-translate="privacy-date">Veracruz, México a 4 de agosto de 2025.</strong> - 
+                        <span data-translate="privacy-intro">En cumplimiento con la Ley Federal de Protección de Datos Personales en Posesión de los Particulares (LFPDPPP) y su Reglamento, Gestraver Logist S.A. de C.V. (en adelante "Gestraver"), con domicilio en Circuito 8 #498, Veracruz, 91808, presenta su aviso de privacidad para el sitio web</span> 
+                        <a href="https://gestraver.com/" target="_blank" class="text-primary hover:text-red-700 font-semibold">https://gestraver.com/</a>.
+                    </p>
+                    <p class="text-lg text-gray-700 leading-relaxed" data-translate="privacy-purpose">
+                        Este documento tiene como finalidad informar a los usuarios sobre el tratamiento que se da a sus datos personales cuando son recabados, utilizados, almacenados y/o transferidos por Gestraver, garantizando en todo momento los principios de licitud, consentimiento, información, calidad, finalidad, lealtad, proporcionalidad y responsabilidad en el tratamiento de los mismos.
+                    </p>
+                </div>
+
+                <!-- Responsible Identity -->
+                <div class="privacy-section bg-white rounded-2xl shadow-lg p-8 md:p-12 mb-8">
+                    <div class="flex items-center mb-6">
+                        <div class="w-12 h-12 bg-primary/10 rounded-xl flex items-center justify-center mr-4">
+                            <i class="fas fa-building text-2xl text-primary"></i>
+                        </div>
+                        <h2 class="text-3xl font-display text-secondary" data-translate="section-identity">
+                            Identidad y Domicilio del Responsable
+                        </h2>
+                    </div>
+                    <div class="h-1 w-20 bg-primary mb-6"></div>
+                    <p class="text-lg text-gray-700 leading-relaxed" data-translate="identity-text">
+                        Gestraver Logist S.A. de C.V. es la entidad responsable del tratamiento de sus datos personales. Para cualquier asunto relacionado con este aviso de privacidad, puede contactarnos a través del correo electrónico: 
+                        <a href="mailto:direccion@gestraver.com" class="text-primary hover:text-red-700 font-semibold">direccion@gestraver.com.mx</a> y/o 
+                        <a href="mailto:ger.operaciones@gestraver.com" class="text-primary hover:text-red-700 font-semibold">ger.operaciones@gestraver.com.mx</a>, 
+                        o al teléfono <a href="tel:2299505574" class="text-primary hover:text-red-700 font-semibold">2299505574</a>.
+                    </p>
+                </div>
+
+                <!-- Personal Data Collected -->
+                <div class="privacy-section bg-white rounded-2xl shadow-lg p-8 md:p-12 mb-8">
+                    <div class="flex items-center mb-6">
+                        <div class="w-12 h-12 bg-primary/10 rounded-xl flex items-center justify-center mr-4">
+                            <i class="fas fa-database text-2xl text-primary"></i>
+                        </div>
+                        <h2 class="text-3xl font-display text-secondary" data-translate="section-data">
+                            Datos Personales que se Recaban
+                        </h2>
+                    </div>
+                    <div class="h-1 w-20 bg-primary mb-6"></div>
+                    <p class="text-lg text-gray-700 leading-relaxed mb-6" data-translate="data-intro">
+                        Gestraver podrá recabar los siguientes datos personales de los usuarios a través de su sitio web y otros medios de contacto:
+                    </p>
+                    
+                    <div class="space-y-4">
+                        <div class="border-l-4 border-primary bg-red-50 p-6 rounded-r-xl hover:shadow-md transition-shadow">
+                            <div class="flex items-start">
+                                <i class="fas fa-id-card text-primary text-xl mr-4 mt-1"></i>
+                                <div>
+                                    <h3 class="text-xl font-semibold text-secondary mb-2" data-translate="data-identification">Datos de identificación:</h3>
+                                    <p class="text-gray-700" data-translate="data-identification-text">Nombre completo, domicilio, teléfono particular o de oficina, correo electrónico, firma autógrafa, Registro Federal de Contribuyentes (RFC), Clave Única de Registro de Población (CURP).</p>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="border-l-4 border-accent bg-orange-50 p-6 rounded-r-xl hover:shadow-md transition-shadow">
+                            <div class="flex items-start">
+                                <i class="fas fa-briefcase text-accent text-xl mr-4 mt-1"></i>
+                                <div>
+                                    <h3 class="text-xl font-semibold text-secondary mb-2" data-translate="data-work">Datos laborales:</h3>
+                                    <p class="text-gray-700" data-translate="data-work-text">Puesto o cargo que desempeña, domicilio de trabajo, correo electrónico institucional, teléfono institucional.</p>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="border-l-4 border-primary bg-red-50 p-6 rounded-r-xl hover:shadow-md transition-shadow">
+                            <div class="flex items-start">
+                                <i class="fas fa-file-invoice text-primary text-xl mr-4 mt-1"></i>
+                                <div>
+                                    <h3 class="text-xl font-semibold text-secondary mb-2" data-translate="data-billing">Datos de facturación:</h3>
+                                    <p class="text-gray-700" data-translate="data-billing-text">Razón social, domicilio fiscal, RFC, datos de cuentas bancarias para pago.</p>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="border-l-4 border-accent bg-orange-50 p-6 rounded-r-xl hover:shadow-md transition-shadow">
+                            <div class="flex items-start">
+                                <i class="fas fa-user-shield text-accent text-xl mr-4 mt-1"></i>
+                                <div>
+                                    <h3 class="text-xl font-semibold text-secondary mb-2" data-translate="data-sensitive">Datos personales sensibles:</h3>
+                                    <p class="text-gray-700" data-translate="data-sensitive-text">Gestraver no recaba datos personales considerados como sensibles a través de su sitio web.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Purposes -->
+                <div class="privacy-section bg-white rounded-2xl shadow-lg p-8 md:p-12 mb-8">
+                    <div class="flex items-center mb-6">
+                        <div class="w-12 h-12 bg-primary/10 rounded-xl flex items-center justify-center mr-4">
+                            <i class="fas fa-bullseye text-2xl text-primary"></i>
+                        </div>
+                        <h2 class="text-3xl font-display text-secondary" data-translate="section-purposes">
+                            Finalidades del Tratamiento de Datos Personales
+                        </h2>
+                    </div>
+                    <div class="h-1 w-20 bg-primary mb-6"></div>
+                    <p class="text-lg text-gray-700 leading-relaxed mb-8" data-translate="purposes-intro">
+                        Los datos personales que recabamos serán utilizados para las siguientes finalidades, las cuales son necesarias para el servicio que solicita:
+                    </p>
+                    
+                    <!-- Primary Purposes -->
+                    <div class="mb-8">
+                        <h3 class="text-2xl font-semibold text-primary mb-4 flex items-center">
+                            <i class="fas fa-star mr-3"></i>
+                            <span data-translate="purposes-primary">Finalidades Primarias:</span>
+                        </h3>
+                        <ul class="space-y-3">
+                            <li class="flex items-start text-gray-700">
+                                <svg class="w-6 h-6 text-primary mr-3 mt-0.5 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
+                                    <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"></path>
+                                </svg>
+                                <span data-translate="purpose-1">Proveer los servicios de comercio exterior, logística y transporte solicitados.</span>
+                            </li>
+                            <li class="flex items-start text-gray-700">
+                                <svg class="w-6 h-6 text-primary mr-3 mt-0.5 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
+                                    <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"></path>
+                                </svg>
+                                <span data-translate="purpose-2">Realizar cotizaciones y enviar propuestas de servicios.</span>
+                            </li>
+                            <li class="flex items-start text-gray-700">
+                                <svg class="w-6 h-6 text-primary mr-3 mt-0.5 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
+                                    <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"></path>
+                                </svg>
+                                <span data-translate="purpose-3">Gestionar la facturación y el cobro de los servicios prestados.</span>
+                            </li>
+                            <li class="flex items-start text-gray-700">
+                                <svg class="w-6 h-6 text-primary mr-3 mt-0.5 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
+                                    <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"></path>
+                                </svg>
+                                <span data-translate="purpose-4">Establecer comunicación para el seguimiento de los servicios contratados.</span>
+                            </li>
+                            <li class="flex items-start text-gray-700">
+                                <svg class="w-6 h-6 text-primary mr-3 mt-0.5 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
+                                    <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"></path>
+                                </svg>
+                                <span data-translate="purpose-5">Cumplir con las obligaciones legales y regulatorias aplicables en materia de comercio exterior y transporte.</span>
+                            </li>
+                            <li class="flex items-start text-gray-700">
+                                <svg class="w-6 h-6 text-primary mr-3 mt-0.5 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
+                                    <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"></path>
+                                </svg>
+                                <span data-translate="purpose-6">Integrar y mantener actualizada una base de datos de clientes.</span>
+                            </li>
+                        </ul>
+                    </div>
+                    
+                    <!-- Secondary Purposes -->
+                    <div class="bg-gradient-to-r from-orange-50 to-red-50 p-6 rounded-xl">
+                        <h3 class="text-2xl font-semibold text-accent mb-4 flex items-center">
+                            <i class="fas fa-plus-circle mr-3"></i>
+                            <span data-translate="purposes-secondary">Finalidades Secundarias:</span>
+                        </h3>
+                        <ul class="space-y-3 mb-6">
+                            <li class="flex items-start text-gray-700">
+                                <svg class="w-6 h-6 text-accent mr-3 mt-0.5 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
+                                    <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"></path>
+                                </svg>
+                                <span data-translate="purpose-secondary-1">Enviar comunicaciones con fines mercadotécnicos, publicitarios o de prospección comercial sobre nuevos servicios o promociones.</span>
+                            </li>
+                            <li class="flex items-start text-gray-700">
+                                <svg class="w-6 h-6 text-accent mr-3 mt-0.5 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
+                                    <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"></path>
+                                </svg>
+                                <span data-translate="purpose-secondary-2">Realizar encuestas de satisfacción para mejorar la calidad de nuestros servicios.</span>
+                            </li>
+                        </ul>
+                        <p class="text-gray-700 italic" data-translate="purposes-opt-out">
+                            Si usted no desea que sus datos personales sean tratados para estas finalidades secundarias, puede manifestarlo desde este momento enviando un correo electrónico a la dirección antes mencionada.
+                        </p>
+                    </div>
+                </div>
+
+                <!-- Data Transfer -->
+                <div class="privacy-section bg-white rounded-2xl shadow-lg p-8 md:p-12 mb-8">
+                    <div class="flex items-center mb-6">
+                        <div class="w-12 h-12 bg-primary/10 rounded-xl flex items-center justify-center mr-4">
+                            <i class="fas fa-exchange-alt text-2xl text-primary"></i>
+                        </div>
+                        <h2 class="text-3xl font-display text-secondary" data-translate="section-transfer">
+                            Transferencia de Datos Personales
+                        </h2>
+                    </div>
+                    <div class="h-1 w-20 bg-primary mb-6"></div>
+                    <p class="text-lg text-gray-700 leading-relaxed" data-translate="transfer-text">
+                        Gestraver podrá transferir sus datos personales a terceros, nacionales o extranjeros, que sean necesarios para la prestación de los servicios contratados, tales como agentes aduanales, líneas de transporte, y autoridades competentes en materia de comercio exterior. Estas transferencias se realizarán con todas las medidas de seguridad apropiadas y de conformidad con la LFPDPPP.
+                    </p>
+                </div>
+
+                <!-- Cookies -->
+                <div class="privacy-section bg-white rounded-2xl shadow-lg p-8 md:p-12 mb-8">
+                    <div class="flex items-center mb-6">
+                        <div class="w-12 h-12 bg-primary/10 rounded-xl flex items-center justify-center mr-4">
+                            <i class="fas fa-cookie-bite text-2xl text-primary"></i>
+                        </div>
+                        <h2 class="text-3xl font-display text-secondary" data-translate="section-cookies">
+                            Uso de Cookies y Tecnologías de Rastreo
+                        </h2>
+                    </div>
+                    <div class="h-1 w-20 bg-primary mb-6"></div>
+                    <p class="text-lg text-gray-700 leading-relaxed" data-translate="cookies-text">
+                        El sitio web de Gestraver utiliza cookies y otras tecnologías para mejorar la experiencia del usuario. Estas herramientas recaban información como su tipo de navegador, sistema operativo, y las páginas que visita dentro de nuestro sitio. Esta información es utilizada para fines estadísticos y para mejorar la funcionalidad del sitio. Usted puede deshabilitar el uso de estas tecnologías en la configuración de su navegador.
+                    </p>
+                </div>
+
+                <!-- ARCO Rights -->
+                <div class="privacy-section bg-gradient-to-br from-primary/5 to-accent/5 rounded-2xl shadow-lg p-8 md:p-12 mb-8 border-2 border-primary/20">
+                    <div class="flex items-center mb-6">
+                        <div class="w-12 h-12 bg-primary rounded-xl flex items-center justify-center mr-4">
+                            <i class="fas fa-user-lock text-2xl text-white"></i>
+                        </div>
+                        <h2 class="text-3xl font-display text-secondary" data-translate="section-arco">
+                            Derechos ARCO
+                        </h2>
+                    </div>
+                    <div class="h-1 w-20 bg-primary mb-6"></div>
+                    
+                    <div class="bg-white rounded-xl p-6 mb-6">
+                        <p class="text-lg text-gray-700 leading-relaxed mb-4" data-translate="arco-intro">
+                            Usted tiene derecho a conocer qué datos personales tenemos de usted, para qué los utilizamos y las condiciones del uso que les damos (Acceso). Asimismo, es su derecho solicitar la corrección de su información personal en caso de que esté desactualizada, sea inexacta o incompleta (Rectificación); que la eliminemos de nuestros registros o bases de datos cuando considere que la misma no está siendo utilizada adecuadamente (Cancelación); así como oponerse al uso de sus datos personales para fines específicos (Oposición). Estos derechos se conocen como derechos ARCO.
+                        </p>
+                    </div>
+                    
+                    <p class="text-lg text-gray-700 leading-relaxed mb-4" data-translate="arco-request">
+                        Para el ejercicio de cualquiera de los derechos ARCO, usted deberá presentar la solicitud respectiva a través de un correo electrónico a 
+                        <a href="mailto:direccion@gestraver.com" class="text-primary hover:text-red-700 font-semibold">direccion@gestraver.com</a>, 
+                        la cual deberá contener:
+                    </p>
+                    
+                    <ul class="space-y-3">
+                        <li class="flex items-start text-gray-700 bg-white rounded-lg p-4">
+                            <i class="fas fa-check-circle text-primary text-xl mr-3 mt-1"></i>
+                            <span data-translate="arco-req-1">Nombre del titular y domicilio u otro medio para comunicarle la respuesta a su solicitud.</span>
+                        </li>
+                        <li class="flex items-start text-gray-700 bg-white rounded-lg p-4">
+                            <i class="fas fa-check-circle text-primary text-xl mr-3 mt-1"></i>
+                            <span data-translate="arco-req-2">Los documentos que acrediten la identidad o, en su caso, la representación legal del titular.</span>
+                        </li>
+                        <li class="flex items-start text-gray-700 bg-white rounded-lg p-4">
+                            <i class="fas fa-check-circle text-primary text-xl mr-3 mt-1"></i>
+                            <span data-translate="arco-req-3">La descripción clara y precisa de los datos personales respecto de los que se busca ejercer alguno de los derechos antes mencionados.</span>
+                        </li>
+                        <li class="flex items-start text-gray-700 bg-white rounded-lg p-4">
+                            <i class="fas fa-check-circle text-primary text-xl mr-3 mt-1"></i>
+                            <span data-translate="arco-req-4">Cualquier otro elemento o documento que facilite la localización de los datos personales.</span>
+                        </li>
+                    </ul>
+                </div>
+
+                <!-- Revocation -->
+                <div class="privacy-section bg-white rounded-2xl shadow-lg p-8 md:p-12 mb-8">
+                    <div class="flex items-center mb-6">
+                        <div class="w-12 h-12 bg-primary/10 rounded-xl flex items-center justify-center mr-4">
+                            <i class="fas fa-ban text-2xl text-primary"></i>
+                        </div>
+                        <h2 class="text-3xl font-display text-secondary" data-translate="section-revocation">
+                            Revocación del Consentimiento
+                        </h2>
+                    </div>
+                    <div class="h-1 w-20 bg-primary mb-6"></div>
+                    <p class="text-lg text-gray-700 leading-relaxed" data-translate="revocation-text">
+                        Usted puede revocar el consentimiento que, en su caso, nos haya otorgado para el tratamiento de sus datos personales. Sin embargo, es importante que tenga en cuenta que no en todos los casos podremos atender su solicitud o concluir el uso de forma inmediata, ya que es posible que por alguna obligación legal requiramos seguir tratando sus datos personales.
+                    </p>
+                </div>
+
+                <!-- Modifications -->
+                <div class="privacy-section bg-white rounded-2xl shadow-lg p-8 md:p-12 mb-8">
+                    <div class="flex items-center mb-6">
+                        <div class="w-12 h-12 bg-primary/10 rounded-xl flex items-center justify-center mr-4">
+                            <i class="fas fa-edit text-2xl text-primary"></i>
+                        </div>
+                        <h2 class="text-3xl font-display text-secondary" data-translate="section-modifications">
+                            Modificaciones al Aviso de Privacidad
+                        </h2>
+                    </div>
+                    <div class="h-1 w-20 bg-primary mb-6"></div>
+                    <p class="text-lg text-gray-700 leading-relaxed mb-4" data-translate="modifications-intro">
+                        El presente aviso de privacidad puede sufrir modificaciones, cambios o actualizaciones derivadas de nuevos requerimientos legales; de nuestras propias necesidades por los productos o servicios que ofrecemos; de nuestras prácticas de privacidad; de cambios en nuestro modelo de negocio, o por otras causas.
+                    </p>
+                    <p class="text-lg text-gray-700 leading-relaxed" data-translate="modifications-commitment">
+                        Nos comprometemos a mantenerlo informado sobre los cambios que pueda sufrir el presente aviso de privacidad, a través de nuestro sitio web 
+                        <a href="https://gestraver.com/" target="_blank" class="text-primary hover:text-red-700 font-semibold">https://gestraver.com/</a>.
+                    </p>
+                </div>
+
+                <!-- Back to Home Button -->
+                <div class="text-center mt-12">
+                    <a href="index.html" class="inline-flex items-center px-8 py-4 bg-primary text-white font-semibold rounded-lg hover:bg-red-700 transition-all shadow-lg hover:shadow-xl transform hover:scale-105">
+                        <svg class="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 19l-7-7m0 0l7-7m-7 7h18"></path>
+                        </svg>
+                        <span data-translate="back-home">Volver al Inicio</span>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-dark text-white py-12">
+        <div class="container mx-auto px-4 lg:px-8">
+            <div class="grid md:grid-cols-2 gap-8 mb-8">
+                <div>
+                    <div class="flex items-center space-x-3 mb-4">
+                        <img src="IMG/GESTRAVER.jpg" alt="Logo GESTRAVER" class="h-16 w-16 rounded-lg">
+                        <div>
+                            <h3 class="text-2xl font-display">GESTRAVER</h3>
+                            <p class="text-gray-400 text-sm">Gestiones de Tráfico Veracruz</p>
+                        </div>
+                    </div>
+                </div>
+                <div>
+                    <h4 class="text-lg font-semibold mb-4" data-translate="footer-notices">Avisos</h4>
+                    <ul class="space-y-2">
+                        <li>
+                            <a href="Aviso.html" class="text-gray-400 hover:text-primary transition-colors" data-translate="footer-privacy">Aviso de Privacidad</a>
+                        </li>
+                        <li>
+                            <a href="#" class="text-gray-400 hover:text-primary transition-colors" data-translate="footer-terms">Términos y Condiciones</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            <div class="border-t border-gray-800 pt-8 text-center text-gray-400">
+                <p>&copy; 2024 GESTRAVER. <span data-translate="footer-rights">Todos los derechos reservados.</span></p>
+            </div>
+        </div>
+    </footer>
+
     <script>
-      AOS.init();
+        // Translation System
+        const translations = {
+            es: {
+                // Navigation
+                'nav-inicio': 'Inicio',
+                'nav-nosotros': 'Nosotros',
+                'nav-servicios': 'Servicios',
+                'nav-trabajos': 'Trabajos',
+                'nav-galeria': 'Galería',
+                'nav-contacto': 'Contacto',
+                
+                // Privacy Notice
+                'privacy-title': 'Aviso de Privacidad',
+                'privacy-subtitle': 'Gestraver.com',
+                'privacy-date': 'Veracruz, México a 4 de agosto de 2025.',
+                'privacy-intro': 'En cumplimiento con la Ley Federal de Protección de Datos Personales en Posesión de los Particulares (LFPDPPP) y su Reglamento, Gestraver Logist S.A. de C.V. (en adelante "Gestraver"), con domicilio en Circuito 8 #498, Veracruz, 91808, presenta su aviso de privacidad para el sitio web',
+                'privacy-purpose': 'Este documento tiene como finalidad informar a los usuarios sobre el tratamiento que se da a sus datos personales cuando son recabados, utilizados, almacenados y/o transferidos por Gestraver, garantizando en todo momento los principios de licitud, consentimiento, información, calidad, finalidad, lealtad, proporcionalidad y responsabilidad en el tratamiento de los mismos.',
+                
+                // Sections
+                'section-identity': 'Identidad y Domicilio del Responsable',
+                'identity-text': 'Gestraver Logist S.A. de C.V. es la entidad responsable del tratamiento de sus datos personales. Para cualquier asunto relacionado con este aviso de privacidad, puede contactarnos a través del correo electrónico:',
+                
+                'section-data': 'Datos Personales que se Recaban',
+                'data-intro': 'Gestraver podrá recabar los siguientes datos personales de los usuarios a través de su sitio web y otros medios de contacto:',
+                'data-identification': 'Datos de identificación:',
+                'data-identification-text': 'Nombre completo, domicilio, teléfono particular o de oficina, correo electrónico, firma autógrafa, Registro Federal de Contribuyentes (RFC), Clave Única de Registro de Población (CURP).',
+                'data-work': 'Datos laborales:',
+                'data-work-text': 'Puesto o cargo que desempeña, domicilio de trabajo, correo electrónico institucional, teléfono institucional.',
+                'data-billing': 'Datos de facturación:',
+                'data-billing-text': 'Razón social, domicilio fiscal, RFC, datos de cuentas bancarias para pago.',
+                'data-sensitive': 'Datos personales sensibles:',
+                'data-sensitive-text': 'Gestraver no recaba datos personales considerados como sensibles a través de su sitio web.',
+                
+                'section-purposes': 'Finalidades del Tratamiento de Datos Personales',
+                'purposes-intro': 'Los datos personales que recabamos serán utilizados para las siguientes finalidades, las cuales son necesarias para el servicio que solicita:',
+                'purposes-primary': 'Finalidades Primarias:',
+                'purpose-1': 'Proveer los servicios de comercio exterior, logística y transporte solicitados.',
+                'purpose-2': 'Realizar cotizaciones y enviar propuestas de servicios.',
+                'purpose-3': 'Gestionar la facturación y el cobro de los servicios prestados.',
+                'purpose-4': 'Establecer comunicación para el seguimiento de los servicios contratados.',
+                'purpose-5': 'Cumplir con las obligaciones legales y regulatorias aplicables en materia de comercio exterior y transporte.',
+                'purpose-6': 'Integrar y mantener actualizada una base de datos de clientes.',
+                'purposes-secondary': 'Finalidades Secundarias:',
+                'purpose-secondary-1': 'Enviar comunicaciones con fines mercadotécnicos, publicitarios o de prospección comercial sobre nuevos servicios o promociones.',
+                'purpose-secondary-2': 'Realizar encuestas de satisfacción para mejorar la calidad de nuestros servicios.',
+                'purposes-opt-out': 'Si usted no desea que sus datos personales sean tratados para estas finalidades secundarias, puede manifestarlo desde este momento enviando un correo electrónico a la dirección antes mencionada.',
+                
+                'section-transfer': 'Transferencia de Datos Personales',
+                'transfer-text': 'Gestraver podrá transferir sus datos personales a terceros, nacionales o extranjeros, que sean necesarios para la prestación de los servicios contratados, tales como agentes aduanales, líneas de transporte, y autoridades competentes en materia de comercio exterior. Estas transferencias se realizarán con todas las medidas de seguridad apropiadas y de conformidad con la LFPDPPP.',
+                
+                'section-cookies': 'Uso de Cookies y Tecnologías de Rastreo',
+                'cookies-text': 'El sitio web de Gestraver utiliza cookies y otras tecnologías para mejorar la experiencia del usuario. Estas herramientas recaban información como su tipo de navegador, sistema operativo, y las páginas que visita dentro de nuestro sitio. Esta información es utilizada para fines estadísticos y para mejorar la funcionalidad del sitio. Usted puede deshabilitar el uso de estas tecnologías en la configuración de su navegador.',
+                
+                'section-arco': 'Derechos ARCO',
+                'arco-intro': 'Usted tiene derecho a conocer qué datos personales tenemos de usted, para qué los utilizamos y las condiciones del uso que les damos (Acceso). Asimismo, es su derecho solicitar la corrección de su información personal en caso de que esté desactualizada, sea inexacta o incompleta (Rectificación); que la eliminemos de nuestros registros o bases de datos cuando considere que la misma no está siendo utilizada adecuadamente (Cancelación); así como oponerse al uso de sus datos personales para fines específicos (Oposición). Estos derechos se conocen como derechos ARCO.',
+                'arco-request': 'Para el ejercicio de cualquiera de los derechos ARCO, usted deberá presentar la solicitud respectiva a través de un correo electrónico a',
+                'arco-req-1': 'Nombre del titular y domicilio u otro medio para comunicarle la respuesta a su solicitud.',
+                'arco-req-2': 'Los documentos que acrediten la identidad o, en su caso, la representación legal del titular.',
+                'arco-req-3': 'La descripción clara y precisa de los datos personales respecto de los que se busca ejercer alguno de los derechos antes mencionados.',
+                'arco-req-4': 'Cualquier otro elemento o documento que facilite la localización de los datos personales.',
+                
+                'section-revocation': 'Revocación del Consentimiento',
+                'revocation-text': 'Usted puede revocar el consentimiento que, en su caso, nos haya otorgado para el tratamiento de sus datos personales. Sin embargo, es importante que tenga en cuenta que no en todos los casos podremos atender su solicitud o concluir el uso de forma inmediata, ya que es posible que por alguna obligación legal requiramos seguir tratando sus datos personales.',
+                
+                'section-modifications': 'Modificaciones al Aviso de Privacidad',
+                'modifications-intro': 'El presente aviso de privacidad puede sufrir modificaciones, cambios o actualizaciones derivadas de nuevos requerimientos legales; de nuestras propias necesidades por los productos o servicios que ofrecemos; de nuestras prácticas de privacidad; de cambios en nuestro modelo de negocio, o por otras causas.',
+                'modifications-commitment': 'Nos comprometemos a mantenerlo informado sobre los cambios que pueda sufrir el presente aviso de privacidad, a través de nuestro sitio web',
+                
+                'back-home': 'Volver al Inicio',
+                
+                // Footer
+                'footer-notices': 'Avisos',
+                'footer-privacy': 'Aviso de Privacidad',
+                'footer-terms': 'Términos y Condiciones',
+                'footer-rights': 'Todos los derechos reservados.',
+            },
+            en: {
+                // Navigation
+                'nav-inicio': 'Home',
+                'nav-nosotros': 'About Us',
+                'nav-servicios': 'Services',
+                'nav-trabajos': 'Work',
+                'nav-galeria': 'Gallery',
+                'nav-contacto': 'Contact',
+                
+                // Privacy Notice
+                'privacy-title': 'Privacy Notice',
+                'privacy-subtitle': 'Gestraver.com',
+                'privacy-date': 'Veracruz, Mexico, August 4, 2025.',
+                'privacy-intro': 'In compliance with the Federal Law on Protection of Personal Data Held by Private Parties (LFPDPPP) and its Regulations, Gestraver Logist S.A. de C.V. (hereinafter "Gestraver"), with address at Circuito 8 #498, Veracruz, 91808, presents its privacy notice for the website',
+                'privacy-purpose': 'This document aims to inform users about the treatment given to their personal data when collected, used, stored and/or transferred by Gestraver, guaranteeing at all times the principles of legality, consent, information, quality, purpose, loyalty, proportionality and responsibility in their treatment.',
+                
+                // Sections
+                'section-identity': 'Identity and Address of the Responsible Party',
+                'identity-text': 'Gestraver Logist S.A. de C.V. is the entity responsible for the treatment of your personal data. For any matter related to this privacy notice, you can contact us through email:',
+                
+                'section-data': 'Personal Data Collected',
+                'data-intro': 'Gestraver may collect the following personal data from users through its website and other means of contact:',
+                'data-identification': 'Identification data:',
+                'data-identification-text': 'Full name, address, home or office phone, email, autograph signature, Federal Taxpayer Registry (RFC), Unique Population Registry Code (CURP).',
+                'data-work': 'Employment data:',
+                'data-work-text': 'Position or job title, work address, institutional email, institutional phone.',
+                'data-billing': 'Billing data:',
+                'data-billing-text': 'Business name, tax address, RFC, bank account data for payment.',
+                'data-sensitive': 'Sensitive personal data:',
+                'data-sensitive-text': 'Gestraver does not collect personal data considered sensitive through its website.',
+                
+                'section-purposes': 'Purposes of Personal Data Treatment',
+                'purposes-intro': 'The personal data we collect will be used for the following purposes, which are necessary for the service you request:',
+                'purposes-primary': 'Primary Purposes:',
+                'purpose-1': 'Provide foreign trade, logistics and transportation services requested.',
+                'purpose-2': 'Prepare quotations and send service proposals.',
+                'purpose-3': 'Manage billing and collection of services provided.',
+                'purpose-4': 'Establish communication for tracking contracted services.',
+                'purpose-5': 'Comply with applicable legal and regulatory obligations in foreign trade and transportation.',
+                'purpose-6': 'Integrate and maintain an updated customer database.',
+                'purposes-secondary': 'Secondary Purposes:',
+                'purpose-secondary-1': 'Send communications for marketing, advertising or commercial prospecting purposes about new services or promotions.',
+                'purpose-secondary-2': 'Conduct satisfaction surveys to improve the quality of our services.',
+                'purposes-opt-out': 'If you do not want your personal data to be processed for these secondary purposes, you can express this at this time by sending an email to the address mentioned above.',
+                
+                'section-transfer': 'Transfer of Personal Data',
+                'transfer-text': 'Gestraver may transfer your personal data to third parties, national or foreign, that are necessary for the provision of contracted services, such as customs agents, transportation lines, and competent authorities in foreign trade matters. These transfers will be made with all appropriate security measures and in accordance with the LFPDPPP.',
+                
+                'section-cookies': 'Use of Cookies and Tracking Technologies',
+                'cookies-text': 'The Gestraver website uses cookies and other technologies to improve user experience. These tools collect information such as your browser type, operating system, and the pages you visit within our site. This information is used for statistical purposes and to improve site functionality. You can disable the use of these technologies in your browser settings.',
+                
+                'section-arco': 'ARCO Rights',
+                'arco-intro': 'You have the right to know what personal data we have about you, what we use it for and the conditions of use we give it (Access). Likewise, it is your right to request the correction of your personal information in case it is outdated, inaccurate or incomplete (Rectification); that we delete it from our records or databases when you consider that it is not being used properly (Cancellation); as well as to oppose the use of your personal data for specific purposes (Opposition). These rights are known as ARCO rights.',
+                'arco-request': 'To exercise any of the ARCO rights, you must submit the respective request through an email to',
+                'arco-req-1': 'Name of the holder and address or other means to communicate the response to your request.',
+                'arco-req-2': 'Documents that prove the identity or, where appropriate, the legal representation of the holder.',
+                'arco-req-3': 'Clear and precise description of the personal data regarding which you seek to exercise any of the aforementioned rights.',
+                'arco-req-4': 'Any other element or document that facilitates the location of personal data.',
+                
+                'section-revocation': 'Revocation of Consent',
+                'revocation-text': 'You can revoke the consent that, where appropriate, you have granted us for the treatment of your personal data. However, it is important that you keep in mind that not in all cases we will be able to attend to your request or conclude the use immediately, since it is possible that due to some legal obligation we need to continue processing your personal data.',
+                
+                'section-modifications': 'Modifications to the Privacy Notice',
+                'modifications-intro': 'This privacy notice may undergo modifications, changes or updates derived from new legal requirements; from our own needs for the products or services we offer; from our privacy practices; from changes in our business model, or for other causes.',
+                'modifications-commitment': 'We are committed to keeping you informed about the changes that this privacy notice may undergo, through our website',
+                
+                'back-home': 'Back to Home',
+                
+                // Footer
+                'footer-notices': 'Notices',
+                'footer-privacy': 'Privacy Policy',
+                'footer-terms': 'Terms and Conditions',
+                'footer-rights': 'All rights reserved.',
+            }
+        };
+
+        let currentLanguage = 'es';
+
+        function changeLanguage(lang) {
+            currentLanguage = lang;
+            document.getElementById('current-lang').textContent = lang.toUpperCase();
+            document.querySelectorAll('[data-translate]').forEach(element => {
+                const key = element.getAttribute('data-translate');
+                if (translations[lang][key]) {
+                    element.textContent = translations[lang][key];
+                }
+            });
+            localStorage.setItem('preferredLanguage', lang);
+        }
+
+        window.addEventListener('DOMContentLoaded', () => {
+            const savedLang = localStorage.getItem('preferredLanguage');
+            if (savedLang && savedLang !== 'es') {
+                changeLanguage(savedLang);
+            }
+        });
+
+        const mobileMenuBtn = document.getElementById('mobile-menu-btn');
+        const mobileMenu = document.getElementById('mobile-menu');
+        mobileMenuBtn.addEventListener('click', () => {
+            mobileMenu.classList.toggle('hidden');
+        });
     </script>
 </body>
 </html>

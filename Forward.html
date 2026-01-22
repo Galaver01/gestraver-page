@@ -1,125 +1,613 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es" class="scroll-smooth">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>GESTRAVER</title>
-    <link rel="stylesheet" href="styles.css">
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.css">
+    <title>Freight Forwarding - GESTRAVER</title>
     <link rel="icon" href="IMG/GESTRAVER.jpg" type="image/x-icon">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Outfit:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        primary: '#DC2626',
+                        secondary: '#1E293B',
+                        accent: '#F59E0B',
+                        dark: '#0F172A',
+                    },
+                    fontFamily: {
+                        'display': ['Bebas Neue', 'sans-serif'],
+                        'body': ['Outfit', 'sans-serif'],
+                    },
+                }
+            }
+        }
+    </script>
+    <style>
+        .nav-blur {
+            backdrop-filter: blur(12px);
+            background-color: rgba(15, 23, 42, 0.9);
+        }
+        .animate-on-scroll {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 0.8s ease-out;
+        }
+        .animate-on-scroll.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        .card-hover {
+            transition: all 0.3s ease;
+        }
+        .card-hover:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 20px 40px rgba(220, 38, 38, 0.2);
+        }
+        .language-dropdown {
+            display: none;
+        }
+        .language-selector:hover .language-dropdown {
+            display: block;
+        }
+        .image-overlay {
+            position: relative;
+            overflow: hidden;
+        }
+        .image-overlay::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(135deg, rgba(220, 38, 38, 0.7) 0%, rgba(245, 158, 11, 0.5) 100%);
+            opacity: 0;
+            transition: opacity 0.3s ease;
+            z-index: 1;
+        }
+        .image-overlay:hover::before {
+            opacity: 1;
+        }
+        .image-overlay img {
+            transition: transform 0.5s ease;
+        }
+        .image-overlay:hover img {
+            transform: scale(1.1);
+        }
+        .floating-plane {
+            animation: floatPlane 4s ease-in-out infinite;
+        }
+        @keyframes floatPlane {
+            0%, 100% { transform: translateY(0px) translateX(0px); }
+            50% { transform: translateY(-15px) translateX(10px); }
+        }
+    </style>
 </head>
-<body>
-    <header class="navbar navbar-expand-lg navbar-custom fixed-top">
-        <a class="navbar-brand" href="#"><img src="IMG/GESTRAVER.jpg" alt="Logo" class="logo"></a>
-        <span class="ml-3 h4 mb-0 text-white">GESTRAVER</span>
-        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav">
-            <span class="navbar-toggler-icon"></span>
-        </button>
-        <div class="collapse navbar-collapse" id="navbarNav">
-            <ul class="navbar-nav ml-auto">
-                <li class="nav-item"><a href="index.html" class="nav-link">Inicio</a></li>
-                <li class="nav-item"><a href="about.html" class="nav-link">Sobre Nosotros</a></li>
-                <li class="nav-item dropdown">
-                    <a href="#" class="nav-link dropdown-toggle" id="serviciosDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Servicios</a>
-                    <div class="dropdown-menu" aria-labelledby="serviciosDropdown">
-                        <a class="dropdown-item" href="Servicios-Aduanales.html">Servicios Aduanales</a>
-                        <a class="dropdown-item" href="Transporte.html">Transporte Terrestre</a>
-                        <a class="dropdown-item" href="Forward.html">Freight Forwarding</a>
-                    </div>
-                </li>
-                <li class="nav-item"><a href="index.html" class="nav-link">Trabajos</a></li>
-                <li class="nav-item"><a href="index.html" class="nav-link">Galería</a></li>
-                <li class="nav-item"><a href="index.html" class="nav-link">Contacto</a></li>
-            </ul>
-        </div>
-    </header>
-    <section id="sobre-nosotros" class="about-section">
-        <div class="container" >
-            <div class="history" data-aos="fade-up">
-                <h2 class="titulo-historia">¿Qué es Freigt Forwarder?</h2> 
-                <img src="IMG/forward.png" alt="Freight Forward" class="imagen-forwarding">
-                <p>Los Freight Forwarders, también conocidos como Agentes de carga, son los arquitectos de la logística internacional. Estos expertos actúan como intermediarios entre empresas y los múltiples servicios necesarios para transportar mercancías a nivel global. Su misión principal es diseñar y ejecutar soluciones logísticas personalizadas, asegurando que cada envío llegue a su destino de manera eficiente, segura y rentable.</p>
-                <p>¿Por qué son tan importantes? Los Freight Forwarders poseen un profundo conocimiento del mercado, lo que les permite negociar las mejores tarifas, seleccionar las rutas más óptimas y elegir el medio de transporte ideal para cada tipo de carga. Además, su dominio de las leyes, regulaciones y documentación aduanera de diferentes países garantiza el cumplimiento de todos los requisitos legales y minimiza los riesgos asociados al transporte internacional.</p>
-                <p>Mantenerse al día con las últimas tendencias y normativas es fundamental en este campo. Los Freight Forwarders están siempre actualizados sobre cambios relevantes, como las modificaciones en los Incoterms 2020, que puedes explorar en detalle en nuestro artículo dedicado a este tema.</p>
-                <p>La elección del Freight Forwarder adecuado es crucial. Busca aquellos con experiencia comprobada, una amplia red de contactos y la capacidad de resolver cualquier contratiempo que pueda surgir durante el transporte. Su objetivo final es simple: asegurar que tu mercancía llegue a su destino en perfectas condiciones, optimizando costos y tiempos de entrega.</p>
-                <p>¿Listo para simplificar tu logística internacional? ¡Confía en los expertos!</p>
-            </div>
-        </div>
-    </section>
-    <section id="freight-forwarding">
-        <div class="container" data-aos="fade-down">
-        <h2 class="titulo-principal">Gestraver: Tu socio estratégico en Freight Forwarding</h2>
-        <img src="IMG/img8.jpg" alt="servicios" class="imagen-forwarding">
-        <p>En Gestraver, somos expertos en simplificar la complejidad de la logística internacional. Como tu Freight Forwarder de confianza, te ofrecemos soluciones integrales y personalizadas para el transporte de tus mercancías a cualquier parte del mundo.</p>
+<body class="font-body bg-gray-50 text-gray-900">
     
-        <div class="row">
-            <div class="col-md-6" data-aos="fade-right">
-            <h3>¿Por qué elegir Gestraver?</h3>
-            <ul>
-                <li>Experiencia y conocimiento: Contamos con un equipo de profesionales altamente capacitados y con amplia experiencia en el sector.</li>
-                <li>Soluciones a medida: Diseñamos estrategias logísticas adaptadas a tus necesidades específicas y a las características de tu carga</li>
-                <li>Red global: Nuestra extensa red de agentes y colaboradores nos permite ofrecerte servicios eficientes y seguros en cualquier destino</li>
-                <li>Tecnología de vanguardia: Utilizamos herramientas tecnológicas avanzadas para optimizar procesos, rastrear envíos y brindarte información en tiempo real.</li>
-                <li>Compromiso con la excelencia: Nos esforzamos por superar tus expectativas en cada etapa del proceso, desde la planificación hasta la entrega final.</li>
-            </ul>
-            </div>
-            <div class="col-md-6" data-aos="fade-left">
-            <h3>Nuestros servicios de Freight Forwarding incluyen:</h3>
-            <ul>
-                <li>Transporte marítimo, aéreo y terrestre</li>
-                <li>Consolidación y desconsolidación de carga</li>
-                <li>Gestión aduanera y trámites de importación/exportación</li>
-                <li>Seguros de transporte</li>
-                <li>Almacenamiento y distribución</li>
-                <li>Asesoramiento en comercio exterior</li>
-            </ul>
-            </div>
-        </div>
-    
-        <div class="llamado-a-la-accion" data-aos="fade-up">
-            <h3>¡Confía en Gestraver para llevar tus negocios más lejos!</h3>
-            <button>Contáctanos hoy mismo</button>
-        </div>
-        </div>
-    </section>
-    <footer>
-        <div class="footer-container">
-            <div class="footer-section logo">
-                <img src="IMG/GESTRAVER.jpg" alt="Logo de GESTRAVER">
-                <p>GESTIONES DE TRAFICO VERACRUZ</p>
-            </div>
-    
+    <!-- Navbar -->
+    <nav id="navbar" class="fixed w-full z-50 transition-all duration-300 nav-blur shadow-lg">
+        <div class="container mx-auto px-4 lg:px-8">
+            <div class="flex items-center justify-between h-20">
+                <!-- Logo -->
+                <a href="index.html" class="flex items-center space-x-3 group">
+                    <img src="IMG/GESTRAVER.jpg" alt="Logo GESTRAVER" class="h-12 w-12 rounded-lg shadow-lg transition-transform group-hover:scale-110">
+                    <span class="text-2xl font-display text-white tracking-wider">GESTRAVER</span>
+                </a>
                 
-            <div class="footer-section">
-                <h4>Avisos</h4> 
-                <ul>
-                    <li><a href="#" target="_blank">Aviso de Privacidad</a></li>
-                    <li><a href="#" target="_blank">Terminos y condiciones</a></li>
-                </ul>
+                <!-- Desktop Menu -->
+                <div class="hidden lg:flex items-center space-x-1">
+                    <a href="index.html" class="px-4 py-2 text-white hover:text-primary transition-colors font-medium" data-translate="nav-inicio">Inicio</a>
+                    <a href="about.html" class="px-4 py-2 text-white hover:text-primary transition-colors font-medium" data-translate="nav-nosotros">Nosotros</a>
+                    <div class="relative group">
+                        <button class="px-4 py-2 text-primary transition-colors font-medium flex items-center">
+                            <span data-translate="nav-servicios">Servicios</span>
+                            <svg class="w-4 h-4 ml-1 transition-transform group-hover:rotate-180" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
+                            </svg>
+                        </button>
+                        <div class="absolute top-full left-0 w-56 bg-white rounded-lg shadow-2xl opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300 mt-2">
+                            <a href="Servicios-Aduanales.html" class="block px-6 py-3 text-gray-700 hover:bg-primary hover:text-white transition-colors">Servicios Aduanales</a>
+                            <a href="Transporte.html" class="block px-6 py-3 text-gray-700 hover:bg-primary hover:text-white transition-colors">Transporte Terrestre</a>
+                            <a href="Forward.html" class="block px-6 py-3 bg-primary text-white rounded-b-lg">Freight Forwarding</a>
+                        </div>
+                    </div>
+                    <a href="index.html#trabajos" class="px-4 py-2 text-white hover:text-primary transition-colors font-medium" data-translate="nav-trabajos">Trabajos</a>
+                    <a href="index.html#galeria" class="px-4 py-2 text-white hover:text-primary transition-colors font-medium" data-translate="nav-galeria">Galería</a>
+                    <a href="index.html#contacto" class="px-4 py-2 bg-primary text-white rounded-lg hover:bg-red-700 transition-all font-semibold ml-4" data-translate="nav-contacto">Contacto</a>
+                    
+                    <!-- Language Selector -->
+                    <div class="language-selector ml-2 relative">
+                        <button class="px-3 py-2 text-white hover:text-primary transition-colors flex items-center gap-2">
+                            <i class="fas fa-globe"></i>
+                            <span id="current-lang">ES</span>
+                            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
+                            </svg>
+                        </button>
+                        <div class="language-dropdown absolute top-full right-0 mt-2 bg-white rounded-lg shadow-2xl overflow-hidden min-w-[150px]">
+                            <div onclick="changeLanguage('es')" class="px-4 py-3 cursor-pointer hover:bg-primary hover:text-white transition-colors flex items-center gap-2">
+                                <span>🇲🇽</span>
+                                <span>Español</span>
+                            </div>
+                            <div onclick="changeLanguage('en')" class="px-4 py-3 cursor-pointer hover:bg-primary hover:text-white transition-colors flex items-center gap-2">
+                                <span>🇺🇸</span>
+                                <span>English</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Mobile Menu Button -->
+                <button id="mobile-menu-btn" class="lg:hidden text-white focus:outline-none">
+                    <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
+                    </svg>
+                </button>
             </div>
         </div>
-    
-        <div class="footer-copyright">
-            <p>&copy; 2024 GESTRAVER. Todos los derechos reservados.</p>
+        
+        <!-- Mobile Menu -->
+        <div id="mobile-menu" class="hidden lg:hidden bg-secondary/95 backdrop-blur-lg">
+            <div class="container mx-auto px-4 py-4 space-y-2">
+                <a href="index.html" class="block px-4 py-3 text-white hover:bg-primary rounded-lg transition-colors" data-translate="nav-inicio">Inicio</a>
+                <a href="about.html" class="block px-4 py-3 text-white hover:bg-primary rounded-lg transition-colors" data-translate="nav-nosotros">Nosotros</a>
+                <a href="Servicios-Aduanales.html" class="block px-4 py-3 text-white hover:bg-primary rounded-lg transition-colors">Servicios Aduanales</a>
+                <a href="Transporte.html" class="block px-4 py-3 text-white hover:bg-primary rounded-lg transition-colors">Transporte Terrestre</a>
+                <a href="Forward.html" class="block px-4 py-3 bg-primary text-white rounded-lg">Freight Forwarding</a>
+                <a href="index.html#trabajos" class="block px-4 py-3 text-white hover:bg-primary rounded-lg transition-colors" data-translate="nav-trabajos">Trabajos</a>
+                <a href="index.html#galeria" class="block px-4 py-3 text-white hover:bg-primary rounded-lg transition-colors" data-translate="nav-galeria">Galería</a>
+                <a href="index.html#contacto" class="block px-4 py-3 bg-primary text-white rounded-lg text-center font-semibold" data-translate="nav-contacto">Contacto</a>
+                
+                <!-- Language Selector Mobile -->
+                <div class="pt-2 border-t border-gray-700">
+                    <button onclick="changeLanguage('es')" class="block w-full px-4 py-3 text-white hover:bg-primary rounded-lg transition-colors text-left">
+                        🇲🇽 Español
+                    </button>
+                    <button onclick="changeLanguage('en')" class="block w-full px-4 py-3 text-white hover:bg-primary rounded-lg transition-colors text-left">
+                        🇺🇸 English
+                    </button>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="relative pt-32 pb-16 bg-gradient-to-br from-dark via-secondary to-dark overflow-hidden">
+        <div class="absolute inset-0 opacity-10">
+            <div class="absolute top-20 left-10 w-72 h-72 bg-primary rounded-full filter blur-3xl"></div>
+            <div class="absolute bottom-20 right-10 w-96 h-96 bg-accent rounded-full filter blur-3xl"></div>
+        </div>
+        <div class="container mx-auto px-4 lg:px-8 relative z-10">
+            <div class="max-w-4xl mx-auto text-center">
+                <div class="inline-block mb-6">
+                    <div class="w-24 h-24 mx-auto bg-gradient-to-br from-primary to-accent rounded-2xl flex items-center justify-center floating-plane">
+                        <i class="fas fa-plane text-5xl text-white"></i>
+                    </div>
+                </div>
+                <h1 class="text-4xl md:text-6xl font-display text-white mb-6 tracking-wider" data-translate="ff-hero-title">
+                    FREIGHT FORWARDING
+                </h1>
+                <div class="h-1 w-32 bg-primary mx-auto mb-6"></div>
+                <p class="text-xl text-gray-300 max-w-3xl mx-auto" data-translate="ff-hero-subtitle">
+                    Tu puerta de entrada al comercio global
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <!-- What is Freight Forwarding Section -->
+    <section class="py-20 md:py-32 bg-white">
+        <div class="container mx-auto px-4 lg:px-8">
+            <div class="max-w-5xl mx-auto">
+                <div class="text-center mb-12 animate-on-scroll">
+                    <span class="text-primary font-semibold tracking-wider uppercase text-sm" data-translate="what-label">Conocimiento Esencial</span>
+                    <h2 class="text-4xl md:text-6xl font-display mt-4 mb-6 text-secondary" data-translate="what-title">
+                        ¿Qué es Freight Forwarding?
+                    </h2>
+                    <div class="h-1 w-20 bg-primary mx-auto"></div>
+                </div>
+
+                <div class="animate-on-scroll mb-12">
+                    <div class="rounded-2xl overflow-hidden shadow-2xl mb-8">
+                        <img src="IMG/forward.png" alt="Freight Forwarding" class="w-full h-auto">
+                    </div>
+                </div>
+
+                <div class="space-y-6 text-lg text-gray-700 leading-relaxed">
+                    <p class="animate-on-scroll" data-translate="what-text-1">
+                        Los Freight Forwarders, también conocidos como Agentes de carga, son los arquitectos de la logística internacional. Estos expertos actúan como intermediarios entre empresas y los múltiples servicios necesarios para transportar mercancías a nivel global. Su misión principal es diseñar y ejecutar soluciones logísticas personalizadas, asegurando que cada envío llegue a su destino de manera eficiente, segura y rentable.
+                    </p>
+                    
+                    <div class="bg-gradient-to-r from-primary/10 to-accent/10 rounded-xl p-8 border-l-4 border-primary animate-on-scroll">
+                        <h3 class="text-2xl font-semibold text-secondary mb-4" data-translate="what-importance">¿Por qué son tan importantes?</h3>
+                        <p data-translate="what-text-2">
+                            Los Freight Forwarders poseen un profundo conocimiento del mercado, lo que les permite negociar las mejores tarifas, seleccionar las rutas más óptimas y elegir el medio de transporte ideal para cada tipo de carga. Además, su dominio de las leyes, regulaciones y documentación aduanera de diferentes países garantiza el cumplimiento de todos los requisitos legales y minimiza los riesgos asociados al transporte internacional.
+                        </p>
+                    </div>
+
+                    <p class="animate-on-scroll" data-translate="what-text-3">
+                        Mantenerse al día con las últimas tendencias y normativas es fundamental en este campo. Los Freight Forwarders están siempre actualizados sobre cambios relevantes, como las modificaciones en los Incoterms 2020, que puedes explorar en detalle en nuestro artículo dedicado a este tema.
+                    </p>
+
+                    <p class="animate-on-scroll" data-translate="what-text-4">
+                        La elección del Freight Forwarder adecuado es crucial. Busca aquellos con experiencia comprobada, una amplia red de contactos y la capacidad de resolver cualquier contratiempo que pueda surgir durante el transporte. Su objetivo final es simple: asegurar que tu mercancía llegue a su destino en perfectas condiciones, optimizando costos y tiempos de entrega.
+                    </p>
+
+                    <div class="text-center bg-gradient-to-r from-primary to-accent text-white rounded-xl p-6 animate-on-scroll">
+                        <p class="text-2xl font-semibold" data-translate="what-cta">¿Listo para simplificar tu logística internacional? ¡Confía en los expertos!</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Gestraver Services Section -->
+    <section class="py-20 md:py-32 bg-gradient-to-br from-gray-50 to-gray-100">
+        <div class="container mx-auto px-4 lg:px-8">
+            <div class="max-w-6xl mx-auto">
+                <div class="text-center mb-12 animate-on-scroll">
+                    <span class="text-primary font-semibold tracking-wider uppercase text-sm" data-translate="gestraver-label">Tu Socio Estratégico</span>
+                    <h2 class="text-4xl md:text-6xl font-display mt-4 mb-6 text-secondary" data-translate="gestraver-title">
+                        Gestraver: Tu socio estratégico en Freight Forwarding
+                    </h2>
+                    <div class="h-1 w-20 bg-primary mx-auto"></div>
+                </div>
+
+                <div class="animate-on-scroll mb-12">
+                    <div class="image-overlay rounded-2xl overflow-hidden shadow-2xl">
+                        <img src="IMG/img8.jpg" alt="Servicios Gestraver" class="w-full h-auto">
+                    </div>
+                </div>
+
+                <p class="text-xl text-gray-700 text-center mb-16 animate-on-scroll" data-translate="gestraver-intro">
+                    En Gestraver, somos expertos en simplificar la complejidad de la logística internacional. Como tu Freight Forwarder de confianza, te ofrecemos soluciones integrales y personalizadas para el transporte de tus mercancías a cualquier parte del mundo.
+                </p>
+
+                <div class="grid md:grid-cols-2 gap-12">
+                    <!-- Why Choose Gestraver -->
+                    <div class="animate-on-scroll">
+                        <div class="bg-white rounded-2xl shadow-lg p-8 border-t-4 border-primary h-full">
+                            <div class="flex items-center mb-6">
+                                <div class="w-14 h-14 bg-primary/10 rounded-xl flex items-center justify-center mr-4">
+                                    <i class="fas fa-star text-3xl text-primary"></i>
+                                </div>
+                                <h3 class="text-3xl font-display text-secondary" data-translate="why-title">¿Por qué elegir Gestraver?</h3>
+                            </div>
+                            <div class="h-1 w-20 bg-primary mb-6"></div>
+                            
+                            <ul class="space-y-4">
+                                <li class="flex items-start">
+                                    <div class="w-8 h-8 bg-primary/10 rounded-lg flex items-center justify-center mr-3 flex-shrink-0 mt-1">
+                                        <i class="fas fa-check text-primary"></i>
+                                    </div>
+                                    <div>
+                                        <p class="font-semibold text-secondary mb-1" data-translate="why-1-title">Experiencia y conocimiento:</p>
+                                        <p class="text-gray-600" data-translate="why-1-text">Contamos con un equipo de profesionales altamente capacitados y con amplia experiencia en el sector.</p>
+                                    </div>
+                                </li>
+                                <li class="flex items-start">
+                                    <div class="w-8 h-8 bg-primary/10 rounded-lg flex items-center justify-center mr-3 flex-shrink-0 mt-1">
+                                        <i class="fas fa-check text-primary"></i>
+                                    </div>
+                                    <div>
+                                        <p class="font-semibold text-secondary mb-1" data-translate="why-2-title">Soluciones a medida:</p>
+                                        <p class="text-gray-600" data-translate="why-2-text">Diseñamos estrategias logísticas adaptadas a tus necesidades específicas y a las características de tu carga.</p>
+                                    </div>
+                                </li>
+                                <li class="flex items-start">
+                                    <div class="w-8 h-8 bg-primary/10 rounded-lg flex items-center justify-center mr-3 flex-shrink-0 mt-1">
+                                        <i class="fas fa-check text-primary"></i>
+                                    </div>
+                                    <div>
+                                        <p class="font-semibold text-secondary mb-1" data-translate="why-3-title">Red global:</p>
+                                        <p class="text-gray-600" data-translate="why-3-text">Nuestra extensa red de agentes y colaboradores nos permite ofrecerte servicios eficientes y seguros en cualquier destino.</p>
+                                    </div>
+                                </li>
+                                <li class="flex items-start">
+                                    <div class="w-8 h-8 bg-primary/10 rounded-lg flex items-center justify-center mr-3 flex-shrink-0 mt-1">
+                                        <i class="fas fa-check text-primary"></i>
+                                    </div>
+                                    <div>
+                                        <p class="font-semibold text-secondary mb-1" data-translate="why-4-title">Tecnología de vanguardia:</p>
+                                        <p class="text-gray-600" data-translate="why-4-text">Utilizamos herramientas tecnológicas avanzadas para optimizar procesos, rastrear envíos y brindarte información en tiempo real.</p>
+                                    </div>
+                                </li>
+                                <li class="flex items-start">
+                                    <div class="w-8 h-8 bg-primary/10 rounded-lg flex items-center justify-center mr-3 flex-shrink-0 mt-1">
+                                        <i class="fas fa-check text-primary"></i>
+                                    </div>
+                                    <div>
+                                        <p class="font-semibold text-secondary mb-1" data-translate="why-5-title">Compromiso con la excelencia:</p>
+                                        <p class="text-gray-600" data-translate="why-5-text">Nos esforzamos por superar tus expectativas en cada etapa del proceso, desde la planificación hasta la entrega final.</p>
+                                    </div>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <!-- Our Services -->
+                    <div class="animate-on-scroll">
+                        <div class="bg-white rounded-2xl shadow-lg p-8 border-t-4 border-accent h-full">
+                            <div class="flex items-center mb-6">
+                                <div class="w-14 h-14 bg-accent/10 rounded-xl flex items-center justify-center mr-4">
+                                    <i class="fas fa-box-open text-3xl text-accent"></i>
+                                </div>
+                                <h3 class="text-3xl font-display text-secondary" data-translate="services-ff-title">Nuestros servicios incluyen:</h3>
+                            </div>
+                            <div class="h-1 w-20 bg-accent mb-6"></div>
+                            
+                            <ul class="space-y-4">
+                                <li class="flex items-start bg-orange-50 rounded-lg p-4">
+                                    <div class="w-8 h-8 bg-accent/20 rounded-lg flex items-center justify-center mr-3 flex-shrink-0">
+                                        <i class="fas fa-ship text-accent"></i>
+                                    </div>
+                                    <p class="text-gray-700 font-medium" data-translate="service-ff-1">Transporte marítimo, aéreo y terrestre</p>
+                                </li>
+                                <li class="flex items-start bg-orange-50 rounded-lg p-4">
+                                    <div class="w-8 h-8 bg-accent/20 rounded-lg flex items-center justify-center mr-3 flex-shrink-0">
+                                        <i class="fas fa-boxes text-accent"></i>
+                                    </div>
+                                    <p class="text-gray-700 font-medium" data-translate="service-ff-2">Consolidación y desconsolidación de carga</p>
+                                </li>
+                                <li class="flex items-start bg-orange-50 rounded-lg p-4">
+                                    <div class="w-8 h-8 bg-accent/20 rounded-lg flex items-center justify-center mr-3 flex-shrink-0">
+                                        <i class="fas fa-file-alt text-accent"></i>
+                                    </div>
+                                    <p class="text-gray-700 font-medium" data-translate="service-ff-3">Gestión aduanera y trámites de importación/exportación</p>
+                                </li>
+                                <li class="flex items-start bg-orange-50 rounded-lg p-4">
+                                    <div class="w-8 h-8 bg-accent/20 rounded-lg flex items-center justify-center mr-3 flex-shrink-0">
+                                        <i class="fas fa-shield-alt text-accent"></i>
+                                    </div>
+                                    <p class="text-gray-700 font-medium" data-translate="service-ff-4">Seguros de transporte</p>
+                                </li>
+                                <li class="flex items-start bg-orange-50 rounded-lg p-4">
+                                    <div class="w-8 h-8 bg-accent/20 rounded-lg flex items-center justify-center mr-3 flex-shrink-0">
+                                        <i class="fas fa-warehouse text-accent"></i>
+                                    </div>
+                                    <p class="text-gray-700 font-medium" data-translate="service-ff-5">Almacenamiento y distribución</p>
+                                </li>
+                                <li class="flex items-start bg-orange-50 rounded-lg p-4">
+                                    <div class="w-8 h-8 bg-accent/20 rounded-lg flex items-center justify-center mr-3 flex-shrink-0">
+                                        <i class="fas fa-handshake text-accent"></i>
+                                    </div>
+                                    <p class="text-gray-700 font-medium" data-translate="service-ff-6">Asesoramiento en comercio exterior</p>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="py-20 bg-gradient-to-br from-dark via-secondary to-dark">
+        <div class="container mx-auto px-4 lg:px-8 text-center">
+            <div class="max-w-4xl mx-auto animate-on-scroll">
+                <h2 class="text-4xl md:text-6xl font-display text-white mb-8" data-translate="final-cta-title">
+                    ¡Confía en Gestraver para llevar tus negocios más lejos!
+                </h2>
+                <p class="text-xl text-gray-300 mb-10" data-translate="final-cta-subtitle">
+                    Expande tus horizontes comerciales con nuestro servicio de Freight Forwarding
+                </p>
+                <a href="index.html#contacto" class="inline-flex items-center px-10 py-5 bg-gradient-to-r from-primary to-accent text-white font-semibold text-lg rounded-lg hover:shadow-2xl transition-all transform hover:scale-105">
+                    <span data-translate="final-cta-button">Contáctanos hoy mismo</span>
+                    <svg class="w-6 h-6 ml-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"></path>
+                    </svg>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-dark text-white py-12">
+        <div class="container mx-auto px-4 lg:px-8">
+            <div class="grid md:grid-cols-2 gap-8 mb-8">
+                <div>
+                    <div class="flex items-center space-x-3 mb-4">
+                        <img src="IMG/GESTRAVER.jpg" alt="Logo GESTRAVER" class="h-16 w-16 rounded-lg">
+                        <div>
+                            <h3 class="text-2xl font-display">GESTRAVER</h3>
+                            <p class="text-gray-400 text-sm">Gestiones de Tráfico Veracruz</p>
+                        </div>
+                    </div>
+                </div>
+                <div>
+                    <h4 class="text-lg font-semibold mb-4" data-translate="footer-notices">Avisos</h4>
+                    <ul class="space-y-2">
+                        <li>
+                            <a href="Aviso.html" class="text-gray-400 hover:text-primary transition-colors" data-translate="footer-privacy">Aviso de Privacidad</a>
+                        </li>
+                        <li>
+                            <a href="#" class="text-gray-400 hover:text-primary transition-colors" data-translate="footer-terms">Términos y Condiciones</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            <div class="border-t border-gray-800 pt-8 text-center text-gray-400">
+                <p>&copy; 2024 GESTRAVER. <span data-translate="footer-rights">Todos los derechos reservados.</span></p>
+            </div>
         </div>
     </footer>
 
-    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.js"></script>
     <script>
-        AOS.init();
+        // Translation System
+        const translations = {
+            es: {
+                // Navigation
+                'nav-inicio': 'Inicio',
+                'nav-nosotros': 'Nosotros',
+                'nav-servicios': 'Servicios',
+                'nav-trabajos': 'Trabajos',
+                'nav-galeria': 'Galería',
+                'nav-contacto': 'Contacto',
+                
+                // Hero
+                'ff-hero-title': 'FREIGHT FORWARDING',
+                'ff-hero-subtitle': 'Tu puerta de entrada al comercio global',
+                
+                // What is FF
+                'what-label': 'Conocimiento Esencial',
+                'what-title': '¿Qué es Freight Forwarding?',
+                'what-text-1': 'Los Freight Forwarders, también conocidos como Agentes de carga, son los arquitectos de la logística internacional. Estos expertos actúan como intermediarios entre empresas y los múltiples servicios necesarios para transportar mercancías a nivel global. Su misión principal es diseñar y ejecutar soluciones logísticas personalizadas, asegurando que cada envío llegue a su destino de manera eficiente, segura y rentable.',
+                'what-importance': '¿Por qué son tan importantes?',
+                'what-text-2': 'Los Freight Forwarders poseen un profundo conocimiento del mercado, lo que les permite negociar las mejores tarifas, seleccionar las rutas más óptimas y elegir el medio de transporte ideal para cada tipo de carga. Además, su dominio de las leyes, regulaciones y documentación aduanera de diferentes países garantiza el cumplimiento de todos los requisitos legales y minimiza los riesgos asociados al transporte internacional.',
+                'what-text-3': 'Mantenerse al día con las últimas tendencias y normativas es fundamental en este campo. Los Freight Forwarders están siempre actualizados sobre cambios relevantes, como las modificaciones en los Incoterms 2020, que puedes explorar en detalle en nuestro artículo dedicado a este tema.',
+                'what-text-4': 'La elección del Freight Forwarder adecuado es crucial. Busca aquellos con experiencia comprobada, una amplia red de contactos y la capacidad de resolver cualquier contratiempo que pueda surgir durante el transporte. Su objetivo final es simple: asegurar que tu mercancía llegue a su destino en perfectas condiciones, optimizando costos y tiempos de entrega.',
+                'what-cta': '¿Listo para simplificar tu logística internacional? ¡Confía en los expertos!',
+                
+                // Gestraver
+                'gestraver-label': 'Tu Socio Estratégico',
+                'gestraver-title': 'Gestraver: Tu socio estratégico en Freight Forwarding',
+                'gestraver-intro': 'En Gestraver, somos expertos en simplificar la complejidad de la logística internacional. Como tu Freight Forwarder de confianza, te ofrecemos soluciones integrales y personalizadas para el transporte de tus mercancías a cualquier parte del mundo.',
+                
+                // Why Choose
+                'why-title': '¿Por qué elegir Gestraver?',
+                'why-1-title': 'Experiencia y conocimiento:',
+                'why-1-text': 'Contamos con un equipo de profesionales altamente capacitados y con amplia experiencia en el sector.',
+                'why-2-title': 'Soluciones a medida:',
+                'why-2-text': 'Diseñamos estrategias logísticas adaptadas a tus necesidades específicas y a las características de tu carga.',
+                'why-3-title': 'Red global:',
+                'why-3-text': 'Nuestra extensa red de agentes y colaboradores nos permite ofrecerte servicios eficientes y seguros en cualquier destino.',
+                'why-4-title': 'Tecnología de vanguardia:',
+                'why-4-text': 'Utilizamos herramientas tecnológicas avanzadas para optimizar procesos, rastrear envíos y brindarte información en tiempo real.',
+                'why-5-title': 'Compromiso con la excelencia:',
+                'why-5-text': 'Nos esforzamos por superar tus expectativas en cada etapa del proceso, desde la planificación hasta la entrega final.',
+                
+                // Services
+                'services-ff-title': 'Nuestros servicios incluyen:',
+                'service-ff-1': 'Transporte marítimo, aéreo y terrestre',
+                'service-ff-2': 'Consolidación y desconsolidación de carga',
+                'service-ff-3': 'Gestión aduanera y trámites de importación/exportación',
+                'service-ff-4': 'Seguros de transporte',
+                'service-ff-5': 'Almacenamiento y distribución',
+                'service-ff-6': 'Asesoramiento en comercio exterior',
+                
+                // Final CTA
+                'final-cta-title': '¡Confía en Gestraver para llevar tus negocios más lejos!',
+                'final-cta-subtitle': 'Expande tus horizontes comerciales con nuestro servicio de Freight Forwarding',
+                'final-cta-button': 'Contáctanos hoy mismo',
+                
+                // Footer
+                'footer-notices': 'Avisos',
+                'footer-privacy': 'Aviso de Privacidad',
+                'footer-terms': 'Términos y Condiciones',
+                'footer-rights': 'Todos los derechos reservados.',
+            },
+            en: {
+                // Navigation
+                'nav-inicio': 'Home',
+                'nav-nosotros': 'About Us',
+                'nav-servicios': 'Services',
+                'nav-trabajos': 'Work',
+                'nav-galeria': 'Gallery',
+                'nav-contacto': 'Contact',
+                
+                // Hero
+                'ff-hero-title': 'FREIGHT FORWARDING',
+                'ff-hero-subtitle': 'Your gateway to global trade',
+                
+                // What is FF
+                'what-label': 'Essential Knowledge',
+                'what-title': 'What is Freight Forwarding?',
+                'what-text-1': 'Freight Forwarders, also known as Cargo Agents, are the architects of international logistics. These experts act as intermediaries between companies and the multiple services necessary to transport goods globally. Their main mission is to design and execute personalized logistics solutions, ensuring that each shipment reaches its destination efficiently, safely and profitably.',
+                'what-importance': 'Why are they so important?',
+                'what-text-2': 'Freight Forwarders possess deep market knowledge, allowing them to negotiate the best rates, select the most optimal routes and choose the ideal mode of transport for each type of cargo. Additionally, their mastery of laws, regulations and customs documentation from different countries ensures compliance with all legal requirements and minimizes risks associated with international transport.',
+                'what-text-3': 'Staying up to date with the latest trends and regulations is fundamental in this field. Freight Forwarders are always updated on relevant changes, such as modifications to Incoterms 2020, which you can explore in detail in our dedicated article on this topic.',
+                'what-text-4': 'Choosing the right Freight Forwarder is crucial. Look for those with proven experience, a wide network of contacts and the ability to resolve any setback that may arise during transport. Their ultimate goal is simple: to ensure that your merchandise reaches its destination in perfect condition, optimizing costs and delivery times.',
+                'what-cta': 'Ready to simplify your international logistics? Trust the experts!',
+                
+                // Gestraver
+                'gestraver-label': 'Your Strategic Partner',
+                'gestraver-title': 'Gestraver: Your strategic partner in Freight Forwarding',
+                'gestraver-intro': 'At Gestraver, we are experts in simplifying the complexity of international logistics. As your trusted Freight Forwarder, we offer you comprehensive and personalized solutions for transporting your goods anywhere in the world.',
+                
+                // Why Choose
+                'why-title': 'Why choose Gestraver?',
+                'why-1-title': 'Experience and knowledge:',
+                'why-1-text': 'We have a team of highly trained professionals with extensive experience in the sector.',
+                'why-2-title': 'Customized solutions:',
+                'why-2-text': 'We design logistics strategies adapted to your specific needs and cargo characteristics.',
+                'why-3-title': 'Global network:',
+                'why-3-text': 'Our extensive network of agents and collaborators allows us to offer you efficient and secure services to any destination.',
+                'why-4-title': 'Cutting-edge technology:',
+                'why-4-text': 'We use advanced technological tools to optimize processes, track shipments and provide you with real-time information.',
+                'why-5-title': 'Commitment to excellence:',
+                'why-5-text': 'We strive to exceed your expectations at every stage of the process, from planning to final delivery.',
+                
+                // Services
+                'services-ff-title': 'Our services include:',
+                'service-ff-1': 'Maritime, air and ground transportation',
+                'service-ff-2': 'Cargo consolidation and deconsolidation',
+                'service-ff-3': 'Customs management and import/export procedures',
+                'service-ff-4': 'Transport insurance',
+                'service-ff-5': 'Warehousing and distribution',
+                'service-ff-6': 'Foreign trade consulting',
+                
+                // Final CTA
+                'final-cta-title': 'Trust Gestraver to take your business further!',
+                'final-cta-subtitle': 'Expand your commercial horizons with our Freight Forwarding service',
+                'final-cta-button': 'Contact us today',
+                
+                // Footer
+                'footer-notices': 'Notices',
+                'footer-privacy': 'Privacy Policy',
+                'footer-terms': 'Terms and Conditions',
+                'footer-rights': 'All rights reserved.',
+            }
+        };
 
-        $('#imageModal').on('show.bs.modal', function (event) {
-            var button = $(event.relatedTarget);
-            var imageSrc = button.data('image');
-            var modal = $(this);
-            modal.find('#modalImage').attr('src', imageSrc);
+        let currentLanguage = 'es';
+
+        function changeLanguage(lang) {
+            currentLanguage = lang;
+            document.getElementById('current-lang').textContent = lang.toUpperCase();
+            document.querySelectorAll('[data-translate]').forEach(element => {
+                const key = element.getAttribute('data-translate');
+                if (translations[lang][key]) {
+                    element.textContent = translations[lang][key];
+                }
+            });
+            localStorage.setItem('preferredLanguage', lang);
+        }
+
+        window.addEventListener('DOMContentLoaded', () => {
+            const savedLang = localStorage.getItem('preferredLanguage');
+            if (savedLang && savedLang !== 'es') {
+                changeLanguage(savedLang);
+            }
         });
 
+        const mobileMenuBtn = document.getElementById('mobile-menu-btn');
+        const mobileMenu = document.getElementById('mobile-menu');
+        mobileMenuBtn.addEventListener('click', () => {
+            mobileMenu.classList.toggle('hidden');
+        });
+
+        // Scroll Animation
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('.animate-on-scroll').forEach(el => {
+            observer.observe(el);
+        });
     </script>
 </body>
 </html>

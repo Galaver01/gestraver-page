@@ -1,119 +1,583 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es" class="scroll-smooth">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>GESTRAVER</title>
-    <link rel="stylesheet" href="styles.css">
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.css">
+    <title>Servicios Aduanales - GESTRAVER</title>
     <link rel="icon" href="IMG/GESTRAVER.jpg" type="image/x-icon">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Outfit:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        primary: '#DC2626',
+                        secondary: '#1E293B',
+                        accent: '#F59E0B',
+                        dark: '#0F172A',
+                    },
+                    fontFamily: {
+                        'display': ['Bebas Neue', 'sans-serif'],
+                        'body': ['Outfit', 'sans-serif'],
+                    },
+                }
+            }
+        }
+    </script>
+    <style>
+        .nav-blur {
+            backdrop-filter: blur(12px);
+            background-color: rgba(15, 23, 42, 0.9);
+        }
+        .animate-on-scroll {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 0.8s ease-out;
+        }
+        .animate-on-scroll.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        .card-hover {
+            transition: all 0.3s ease;
+        }
+        .card-hover:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 20px 40px rgba(220, 38, 38, 0.2);
+        }
+        .language-dropdown {
+            display: none;
+        }
+        .language-selector:hover .language-dropdown {
+            display: block;
+        }
+        .image-overlay {
+            position: relative;
+            overflow: hidden;
+        }
+        .image-overlay::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(135deg, rgba(220, 38, 38, 0.7) 0%, rgba(245, 158, 11, 0.5) 100%);
+            opacity: 0;
+            transition: opacity 0.3s ease;
+            z-index: 1;
+        }
+        .image-overlay:hover::before {
+            opacity: 1;
+        }
+        .image-overlay img {
+            transition: transform 0.5s ease;
+        }
+        .image-overlay:hover img {
+            transform: scale(1.1);
+        }
+        .pulse-icon {
+            animation: pulse 2s ease-in-out infinite;
+        }
+        @keyframes pulse {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.05); }
+        }
+    </style>
 </head>
-<body>
-    <header class="navbar navbar-expand-lg navbar-custom fixed-top">
-        <a class="navbar-brand" href="#"><img src="IMG/GESTRAVER.jpg" alt="Logo" class="logo"></a>
-        <span class="ml-3 h4 mb-0 text-white">GESTRAVER</span>
-        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav">
-            <span class="navbar-toggler-icon"></span>
-        </button>
-        <div class="collapse navbar-collapse" id="navbarNav">
-            <ul class="navbar-nav ml-auto">
-                <li class="nav-item"><a href="index.html" class="nav-link">Inicio</a></li>
-                <li class="nav-item"><a href="about.html" class="nav-link">Sobre Nosotros</a></li>
-                <li class="nav-item dropdown">
-                    <a href="#" class="nav-link dropdown-toggle" id="serviciosDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Servicios</a>
-                    <div class="dropdown-menu" aria-labelledby="serviciosDropdown">
-                        <a class="dropdown-item" href="Servicios-Aduanales.html">Servicios Aduanales</a>
-                        <a class="dropdown-item" href="Transporte.html">Transporte Terrestre</a>
-                        <a class="dropdown-item" href="Forward.html">Freight Forwarding</a>
-                    </div>
-                </li>
-                <li class="nav-item"><a href="index.html" class="nav-link">Trabajos</a></li>
-                <li class="nav-item"><a href="index.html" class="nav-link">Galería</a></li>
-                <li class="nav-item"><a href="index.html" class="nav-link">Contacto</a></li>
-            </ul>
-        </div>
-    </header>
+<body class="font-body bg-gray-50 text-gray-900">
     
-    <section id="servicios-comercio-exterior" data-aos="fade-right">
-        <div class="container">
-        <div class="row">
-            <div class="col-md-6">
-            <h2>SERVICIOS DE COMERCIO EXTERIOR</h2>
-            <p class="patente">Patente 1739</p>
-            <ul class="lista-servicios">
-                <li>Importación y exportación de mercancías en tráfico marítimo</li>
-                <li>Planeación y despacho de proyectos industriales a la medida</li>
-                <li>Atención de juntas técnicas arancelarias</li>
-                <li>Capacitación empresarial</li>
-                <li>Consultas ante las diferentes autoridades en materia aduanera y de comercio exterior</li>
-                <li>Consultas sobre Clasificación Arancelaria</li>
-                <li>Asesoramiento en estrategias para la correcta importación y exportación</li>
-            </ul>
-            </div>
-            <div class="col-md-6">
-            <img src="IMG/img11.jpg" alt="Imagen de comercio exterior" class="img-fluid"> </div>
-        </div>
-        </div>
-    </section>
-    <section id="servicios-comercio-exterior" data-aos="fade-left">
-        <div class="container">
-            <div class="row">
-                <div class="col-md-6">
-                    <img src="IMG/img12.jpg" alt="Imagen de comercio exterior" class="img-flui">
-                </div>
-                <div class="col-md-6">
-                    <h2>Fletes marítimos Internacionales</h2>
-                    <ul class="lista-servicios">
-                        <li>Gran variedad de rutas para optimizar y agilizar el envío de las mercancías.</li>
-                        <li>Opciones con amplios días libres de demoras e ingreso de cartas garantías.</li>
-                        <li>Seguimiento puntual en la emisión de la documentación final</li>
-                    </ul>
-                    <h2>Coordinación Logística</h2>
-                    <ul class="lista-servicios">
-                        <li>Ofrecemos paquetes integrales en donde se brindan beneficios, tales como; maniobras a bajo costo, almacenaje y resguardo de contenedores SIN costo extra.</li>
-                    </ul>
-                </div>
-            </div>
-        </div>
-    </section>
-    <footer>
-        <div class="footer-container">
-            <div class="footer-section logo">
-                <img src="IMG/GESTRAVER.jpg" alt="Logo de GESTRAVER">
-                <p>GESTIONES DE TRAFICO VERACRUZ</p>
-            </div>
-    
+    <!-- Navbar -->
+    <nav id="navbar" class="fixed w-full z-50 transition-all duration-300 nav-blur shadow-lg">
+        <div class="container mx-auto px-4 lg:px-8">
+            <div class="flex items-center justify-between h-20">
+                <!-- Logo -->
+                <a href="index.html" class="flex items-center space-x-3 group">
+                    <img src="IMG/GESTRAVER.jpg" alt="Logo GESTRAVER" class="h-12 w-12 rounded-lg shadow-lg transition-transform group-hover:scale-110">
+                    <span class="text-2xl font-display text-white tracking-wider">GESTRAVER</span>
+                </a>
                 
-            <div class="footer-section">
-                <h4>Avisos</h4> 
-                <ul>
-                    <li><a href="#" target="_blank">Aviso de Privacidad</a></li>
-                    <li><a href="#" target="_blank">Terminos y condiciones</a></li>
-                </ul>
+                <!-- Desktop Menu -->
+                <div class="hidden lg:flex items-center space-x-1">
+                    <a href="index.html" class="px-4 py-2 text-white hover:text-primary transition-colors font-medium" data-translate="nav-inicio">Inicio</a>
+                    <a href="about.html" class="px-4 py-2 text-white hover:text-primary transition-colors font-medium" data-translate="nav-nosotros">Nosotros</a>
+                    <div class="relative group">
+                        <button class="px-4 py-2 text-primary transition-colors font-medium flex items-center">
+                            <span data-translate="nav-servicios">Servicios</span>
+                            <svg class="w-4 h-4 ml-1 transition-transform group-hover:rotate-180" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
+                            </svg>
+                        </button>
+                        <div class="absolute top-full left-0 w-56 bg-white rounded-lg shadow-2xl opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300 mt-2">
+                            <a href="Servicios-Aduanales.html" class="block px-6 py-3 bg-primary text-white">Servicios Aduanales</a>
+                            <a href="Transporte.html" class="block px-6 py-3 text-gray-700 hover:bg-primary hover:text-white transition-colors">Transporte Terrestre</a>
+                            <a href="Forward.html" class="block px-6 py-3 text-gray-700 hover:bg-primary hover:text-white transition-colors rounded-b-lg">Freight Forwarding</a>
+                        </div>
+                    </div>
+                    <a href="index.html#trabajos" class="px-4 py-2 text-white hover:text-primary transition-colors font-medium" data-translate="nav-trabajos">Trabajos</a>
+                    <a href="index.html#galeria" class="px-4 py-2 text-white hover:text-primary transition-colors font-medium" data-translate="nav-galeria">Galería</a>
+                    <a href="index.html#contacto" class="px-4 py-2 bg-primary text-white rounded-lg hover:bg-red-700 transition-all font-semibold ml-4" data-translate="nav-contacto">Contacto</a>
+                    
+                    <!-- Language Selector -->
+                    <div class="language-selector ml-2 relative">
+                        <button class="px-3 py-2 text-white hover:text-primary transition-colors flex items-center gap-2">
+                            <i class="fas fa-globe"></i>
+                            <span id="current-lang">ES</span>
+                            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
+                            </svg>
+                        </button>
+                        <div class="language-dropdown absolute top-full right-0 mt-2 bg-white rounded-lg shadow-2xl overflow-hidden min-w-[150px]">
+                            <div onclick="changeLanguage('es')" class="px-4 py-3 cursor-pointer hover:bg-primary hover:text-white transition-colors flex items-center gap-2">
+                                <span>🇲🇽</span>
+                                <span>Español</span>
+                            </div>
+                            <div onclick="changeLanguage('en')" class="px-4 py-3 cursor-pointer hover:bg-primary hover:text-white transition-colors flex items-center gap-2">
+                                <span>🇺🇸</span>
+                                <span>English</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Mobile Menu Button -->
+                <button id="mobile-menu-btn" class="lg:hidden text-white focus:outline-none">
+                    <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
+                    </svg>
+                </button>
             </div>
         </div>
-    
-        <div class="footer-copyright">
-            <p>&copy; 2024 GESTRAVER. Todos los derechos reservados.</p>
+        
+        <!-- Mobile Menu -->
+        <div id="mobile-menu" class="hidden lg:hidden bg-secondary/95 backdrop-blur-lg">
+            <div class="container mx-auto px-4 py-4 space-y-2">
+                <a href="index.html" class="block px-4 py-3 text-white hover:bg-primary rounded-lg transition-colors" data-translate="nav-inicio">Inicio</a>
+                <a href="about.html" class="block px-4 py-3 text-white hover:bg-primary rounded-lg transition-colors" data-translate="nav-nosotros">Nosotros</a>
+                <a href="Servicios-Aduanales.html" class="block px-4 py-3 bg-primary text-white rounded-lg">Servicios Aduanales</a>
+                <a href="Transporte.html" class="block px-4 py-3 text-white hover:bg-primary rounded-lg transition-colors">Transporte Terrestre</a>
+                <a href="Forward.html" class="block px-4 py-3 text-white hover:bg-primary rounded-lg transition-colors">Freight Forwarding</a>
+                <a href="index.html#trabajos" class="block px-4 py-3 text-white hover:bg-primary rounded-lg transition-colors" data-translate="nav-trabajos">Trabajos</a>
+                <a href="index.html#galeria" class="block px-4 py-3 text-white hover:bg-primary rounded-lg transition-colors" data-translate="nav-galeria">Galería</a>
+                <a href="index.html#contacto" class="block px-4 py-3 bg-primary text-white rounded-lg text-center font-semibold" data-translate="nav-contacto">Contacto</a>
+                
+                <!-- Language Selector Mobile -->
+                <div class="pt-2 border-t border-gray-700">
+                    <button onclick="changeLanguage('es')" class="block w-full px-4 py-3 text-white hover:bg-primary rounded-lg transition-colors text-left">
+                        🇲🇽 Español
+                    </button>
+                    <button onclick="changeLanguage('en')" class="block w-full px-4 py-3 text-white hover:bg-primary rounded-lg transition-colors text-left">
+                        🇺🇸 English
+                    </button>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="relative pt-32 pb-16 bg-gradient-to-br from-dark via-secondary to-dark overflow-hidden">
+        <div class="absolute inset-0 opacity-10">
+            <div class="absolute top-20 left-10 w-72 h-72 bg-primary rounded-full filter blur-3xl"></div>
+            <div class="absolute bottom-20 right-10 w-96 h-96 bg-accent rounded-full filter blur-3xl"></div>
+        </div>
+        <div class="container mx-auto px-4 lg:px-8 relative z-10">
+            <div class="max-w-4xl mx-auto text-center">
+                <div class="inline-block mb-6">
+                    <div class="w-24 h-24 mx-auto bg-gradient-to-br from-primary to-accent rounded-2xl flex items-center justify-center pulse-icon">
+                        <i class="fas fa-globe-americas text-5xl text-white"></i>
+                    </div>
+                </div>
+                <h1 class="text-4xl md:text-6xl font-display text-white mb-6 tracking-wider" data-translate="customs-hero-title">
+                    SERVICIOS ADUANALES
+                </h1>
+                <div class="h-1 w-32 bg-primary mx-auto mb-6"></div>
+                <div class="inline-block bg-gradient-to-r from-primary to-accent px-8 py-3 rounded-full">
+                    <p class="text-2xl md:text-3xl text-white font-display tracking-wider" data-translate="customs-patent">Patente 1739</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Foreign Trade Services Section -->
+    <section class="py-20 md:py-32 bg-white">
+        <div class="container mx-auto px-4 lg:px-8">
+            <div class="max-w-6xl mx-auto">
+                <div class="grid md:grid-cols-2 gap-12 items-center">
+                    <div class="animate-on-scroll">
+                        <span class="text-primary font-semibold tracking-wider uppercase text-sm" data-translate="commerce-label">Comercio Internacional</span>
+                        <h2 class="text-4xl md:text-5xl font-display mt-4 mb-6 text-secondary" data-translate="commerce-title">
+                            SERVICIOS DE COMERCIO EXTERIOR
+                        </h2>
+                        <div class="h-1 w-20 bg-primary mb-8"></div>
+                        
+                        <ul class="space-y-4">
+                            <li class="flex items-start">
+                                <div class="w-8 h-8 bg-primary/10 rounded-lg flex items-center justify-center mr-4 flex-shrink-0 mt-1">
+                                    <i class="fas fa-ship text-primary"></i>
+                                </div>
+                                <p class="text-gray-700" data-translate="service-1">Importación y exportación de mercancías en tráfico marítimo</p>
+                            </li>
+                            <li class="flex items-start">
+                                <div class="w-8 h-8 bg-primary/10 rounded-lg flex items-center justify-center mr-4 flex-shrink-0 mt-1">
+                                    <i class="fas fa-industry text-primary"></i>
+                                </div>
+                                <p class="text-gray-700" data-translate="service-2">Planeación y despacho de proyectos industriales a la medida</p>
+                            </li>
+                            <li class="flex items-start">
+                                <div class="w-8 h-8 bg-primary/10 rounded-lg flex items-center justify-center mr-4 flex-shrink-0 mt-1">
+                                    <i class="fas fa-users text-primary"></i>
+                                </div>
+                                <p class="text-gray-700" data-translate="service-3">Atención de juntas técnicas arancelarias</p>
+                            </li>
+                            <li class="flex items-start">
+                                <div class="w-8 h-8 bg-primary/10 rounded-lg flex items-center justify-center mr-4 flex-shrink-0 mt-1">
+                                    <i class="fas fa-chalkboard-teacher text-primary"></i>
+                                </div>
+                                <p class="text-gray-700" data-translate="service-4">Capacitación empresarial</p>
+                            </li>
+                            <li class="flex items-start">
+                                <div class="w-8 h-8 bg-primary/10 rounded-lg flex items-center justify-center mr-4 flex-shrink-0 mt-1">
+                                    <i class="fas fa-balance-scale text-primary"></i>
+                                </div>
+                                <p class="text-gray-700" data-translate="service-5">Consultas ante las diferentes autoridades en materia aduanera y de comercio exterior</p>
+                            </li>
+                            <li class="flex items-start">
+                                <div class="w-8 h-8 bg-primary/10 rounded-lg flex items-center justify-center mr-4 flex-shrink-0 mt-1">
+                                    <i class="fas fa-tags text-primary"></i>
+                                </div>
+                                <p class="text-gray-700" data-translate="service-6">Consultas sobre Clasificación Arancelaria</p>
+                            </li>
+                            <li class="flex items-start">
+                                <div class="w-8 h-8 bg-primary/10 rounded-lg flex items-center justify-center mr-4 flex-shrink-0 mt-1">
+                                    <i class="fas fa-lightbulb text-primary"></i>
+                                </div>
+                                <p class="text-gray-700" data-translate="service-7">Asesoramiento en estrategias para la correcta importación y exportación</p>
+                            </li>
+                        </ul>
+                    </div>
+                    
+                    <div class="animate-on-scroll image-overlay rounded-2xl overflow-hidden shadow-2xl">
+                        <img src="IMG/img11.jpg" alt="Comercio Exterior" class="w-full h-full object-cover">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Maritime & Logistics Section -->
+    <section class="py-20 md:py-32 bg-gradient-to-br from-gray-50 to-gray-100">
+        <div class="container mx-auto px-4 lg:px-8">
+            <div class="max-w-6xl mx-auto">
+                <div class="grid md:grid-cols-2 gap-12 items-center">
+                    <div class="animate-on-scroll image-overlay rounded-2xl overflow-hidden shadow-2xl order-2 md:order-1">
+                        <img src="IMG/img12.jpg" alt="Fletes Marítimos" class="w-full h-full object-cover">
+                    </div>
+                    
+                    <div class="animate-on-scroll order-1 md:order-2">
+                        <!-- Maritime Freight -->
+                        <div class="mb-12">
+                            <div class="flex items-center mb-6">
+                                <div class="w-14 h-14 bg-primary/10 rounded-xl flex items-center justify-center mr-4">
+                                    <i class="fas fa-anchor text-3xl text-primary"></i>
+                                </div>
+                                <h2 class="text-3xl md:text-4xl font-display text-secondary" data-translate="maritime-title">
+                                    Fletes Marítimos Internacionales
+                                </h2>
+                            </div>
+                            <div class="h-1 w-20 bg-primary mb-6"></div>
+                            
+                            <ul class="space-y-4 mb-8">
+                                <li class="flex items-start">
+                                    <svg class="w-6 h-6 text-primary mr-3 mt-0.5 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
+                                        <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"></path>
+                                    </svg>
+                                    <p class="text-gray-700" data-translate="maritime-1">Gran variedad de rutas para optimizar y agilizar el envío de las mercancías.</p>
+                                </li>
+                                <li class="flex items-start">
+                                    <svg class="w-6 h-6 text-primary mr-3 mt-0.5 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
+                                        <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"></path>
+                                    </svg>
+                                    <p class="text-gray-700" data-translate="maritime-2">Opciones con amplios días libres de demoras e ingreso de cartas garantías.</p>
+                                </li>
+                                <li class="flex items-start">
+                                    <svg class="w-6 h-6 text-primary mr-3 mt-0.5 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
+                                        <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"></path>
+                                    </svg>
+                                    <p class="text-gray-700" data-translate="maritime-3">Seguimiento puntual en la emisión de la documentación final</p>
+                                </li>
+                            </ul>
+                        </div>
+                        
+                        <!-- Logistics Coordination -->
+                        <div class="bg-gradient-to-br from-primary/5 to-accent/5 rounded-2xl p-8 border-l-4 border-accent">
+                            <div class="flex items-center mb-6">
+                                <div class="w-14 h-14 bg-accent/10 rounded-xl flex items-center justify-center mr-4">
+                                    <i class="fas fa-cogs text-3xl text-accent"></i>
+                                </div>
+                                <h2 class="text-3xl md:text-4xl font-display text-secondary" data-translate="logistics-title">
+                                    Coordinación Logística
+                                </h2>
+                            </div>
+                            <div class="h-1 w-20 bg-accent mb-6"></div>
+                            
+                            <div class="flex items-start">
+                                <svg class="w-6 h-6 text-accent mr-3 mt-0.5 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
+                                    <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"></path>
+                                </svg>
+                                <p class="text-gray-700" data-translate="logistics-text">Ofrecemos paquetes integrales en donde se brindan beneficios, tales como; maniobras a bajo costo, almacenaje y resguardo de contenedores SIN costo extra.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Features Grid -->
+    <section class="py-20 bg-gradient-to-br from-dark via-secondary to-dark">
+        <div class="container mx-auto px-4 lg:px-8">
+            <div class="text-center mb-16 animate-on-scroll">
+                <span class="text-accent font-semibold tracking-wider uppercase text-sm" data-translate="features-label">Ventajas Competitivas</span>
+                <h2 class="text-4xl md:text-6xl font-display mt-4 mb-6 text-white" data-translate="features-title">
+                    ¿Por Qué Elegirnos?
+                </h2>
+                <div class="h-1 w-20 bg-primary mx-auto"></div>
+            </div>
+
+            <div class="grid md:grid-cols-3 gap-8 max-w-5xl mx-auto">
+                <div class="animate-on-scroll card-hover bg-white/5 backdrop-blur-sm border border-white/10 rounded-2xl p-8 text-center">
+                    <div class="w-20 h-20 mx-auto mb-6 bg-gradient-to-br from-primary to-accent rounded-2xl flex items-center justify-center">
+                        <i class="fas fa-certificate text-4xl text-white"></i>
+                    </div>
+                    <h3 class="text-xl font-semibold text-white mb-3" data-translate="feature-1-title">Experiencia Certificada</h3>
+                    <p class="text-gray-300" data-translate="feature-1-text">Patente aduanal vigente y años de trayectoria</p>
+                </div>
+
+                <div class="animate-on-scroll card-hover bg-white/5 backdrop-blur-sm border border-white/10 rounded-2xl p-8 text-center" style="animation-delay: 0.1s;">
+                    <div class="w-20 h-20 mx-auto mb-6 bg-gradient-to-br from-primary to-accent rounded-2xl flex items-center justify-center">
+                        <i class="fas fa-headset text-4xl text-white"></i>
+                    </div>
+                    <h3 class="text-xl font-semibold text-white mb-3" data-translate="feature-2-title">Atención 24/7</h3>
+                    <p class="text-gray-300" data-translate="feature-2-text">Soporte continuo para tus operaciones</p>
+                </div>
+
+                <div class="animate-on-scroll card-hover bg-white/5 backdrop-blur-sm border border-white/10 rounded-2xl p-8 text-center" style="animation-delay: 0.2s;">
+                    <div class="w-20 h-20 mx-auto mb-6 bg-gradient-to-br from-primary to-accent rounded-2xl flex items-center justify-center">
+                        <i class="fas fa-chart-line text-4xl text-white"></i>
+                    </div>
+                    <h3 class="text-xl font-semibold text-white mb-3" data-translate="feature-3-title">Optimización de Costos</h3>
+                    <p class="text-gray-300" data-translate="feature-3-text">Reducimos tiempos y maximizamos eficiencia</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="py-16 bg-gradient-to-r from-primary to-accent">
+        <div class="container mx-auto px-4 lg:px-8 text-center">
+            <h2 class="text-3xl md:text-5xl font-display text-white mb-6" data-translate="cta-title">
+                ¿Necesitas asesoría aduanal especializada?
+            </h2>
+            <p class="text-xl text-white/90 mb-8 max-w-2xl mx-auto" data-translate="cta-subtitle">
+                Nuestros expertos están listos para ayudarte con tus operaciones de comercio exterior
+            </p>
+            <a href="index.html#contacto" class="inline-flex items-center px-8 py-4 bg-white text-primary font-semibold rounded-lg hover:bg-gray-100 transition-all shadow-xl hover:shadow-2xl transform hover:scale-105">
+                <span data-translate="cta-button">Contactar Ahora</span>
+                <svg class="w-5 h-5 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"></path>
+                </svg>
+            </a>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-dark text-white py-12">
+        <div class="container mx-auto px-4 lg:px-8">
+            <div class="grid md:grid-cols-2 gap-8 mb-8">
+                <div>
+                    <div class="flex items-center space-x-3 mb-4">
+                        <img src="IMG/GESTRAVER.jpg" alt="Logo GESTRAVER" class="h-16 w-16 rounded-lg">
+                        <div>
+                            <h3 class="text-2xl font-display">GESTRAVER</h3>
+                            <p class="text-gray-400 text-sm">Gestiones de Tráfico Veracruz</p>
+                        </div>
+                    </div>
+                </div>
+                <div>
+                    <h4 class="text-lg font-semibold mb-4" data-translate="footer-notices">Avisos</h4>
+                    <ul class="space-y-2">
+                        <li>
+                            <a href="Aviso.html" class="text-gray-400 hover:text-primary transition-colors" data-translate="footer-privacy">Aviso de Privacidad</a>
+                        </li>
+                        <li>
+                            <a href="#" class="text-gray-400 hover:text-primary transition-colors" data-translate="footer-terms">Términos y Condiciones</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            <div class="border-t border-gray-800 pt-8 text-center text-gray-400">
+                <p>&copy; 2024 GESTRAVER. <span data-translate="footer-rights">Todos los derechos reservados.</span></p>
+            </div>
         </div>
     </footer>
 
-    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.js"></script>
     <script>
-        AOS.init();
+        // Translation System
+        const translations = {
+            es: {
+                // Navigation
+                'nav-inicio': 'Inicio',
+                'nav-nosotros': 'Nosotros',
+                'nav-servicios': 'Servicios',
+                'nav-trabajos': 'Trabajos',
+                'nav-galeria': 'Galería',
+                'nav-contacto': 'Contacto',
+                
+                // Hero
+                'customs-hero-title': 'SERVICIOS ADUANALES',
+                'customs-patent': 'Patente 1739',
+                
+                // Foreign Trade
+                'commerce-label': 'Comercio Internacional',
+                'commerce-title': 'SERVICIOS DE COMERCIO EXTERIOR',
+                'service-1': 'Importación y exportación de mercancías en tráfico marítimo',
+                'service-2': 'Planeación y despacho de proyectos industriales a la medida',
+                'service-3': 'Atención de juntas técnicas arancelarias',
+                'service-4': 'Capacitación empresarial',
+                'service-5': 'Consultas ante las diferentes autoridades en materia aduanera y de comercio exterior',
+                'service-6': 'Consultas sobre Clasificación Arancelaria',
+                'service-7': 'Asesoramiento en estrategias para la correcta importación y exportación',
+                
+                // Maritime & Logistics
+                'maritime-title': 'Fletes Marítimos Internacionales',
+                'maritime-1': 'Gran variedad de rutas para optimizar y agilizar el envío de las mercancías.',
+                'maritime-2': 'Opciones con amplios días libres de demoras e ingreso de cartas garantías.',
+                'maritime-3': 'Seguimiento puntual en la emisión de la documentación final',
+                'logistics-title': 'Coordinación Logística',
+                'logistics-text': 'Ofrecemos paquetes integrales en donde se brindan beneficios, tales como; maniobras a bajo costo, almacenaje y resguardo de contenedores SIN costo extra.',
+                
+                // Features
+                'features-label': 'Ventajas Competitivas',
+                'features-title': '¿Por Qué Elegirnos?',
+                'feature-1-title': 'Experiencia Certificada',
+                'feature-1-text': 'Patente aduanal vigente y años de trayectoria',
+                'feature-2-title': 'Atención 24/7',
+                'feature-2-text': 'Soporte continuo para tus operaciones',
+                'feature-3-title': 'Optimización de Costos',
+                'feature-3-text': 'Reducimos tiempos y maximizamos eficiencia',
+                
+                // CTA
+                'cta-title': '¿Necesitas asesoría aduanal especializada?',
+                'cta-subtitle': 'Nuestros expertos están listos para ayudarte con tus operaciones de comercio exterior',
+                'cta-button': 'Contactar Ahora',
+                
+                // Footer
+                'footer-notices': 'Avisos',
+                'footer-privacy': 'Aviso de Privacidad',
+                'footer-terms': 'Términos y Condiciones',
+                'footer-rights': 'Todos los derechos reservados.',
+            },
+            en: {
+                // Navigation
+                'nav-inicio': 'Home',
+                'nav-nosotros': 'About Us',
+                'nav-servicios': 'Services',
+                'nav-trabajos': 'Work',
+                'nav-galeria': 'Gallery',
+                'nav-contacto': 'Contact',
+                
+                // Hero
+                'customs-hero-title': 'CUSTOMS SERVICES',
+                'customs-patent': 'Patent 1739',
+                
+                // Foreign Trade
+                'commerce-label': 'International Trade',
+                'commerce-title': 'FOREIGN TRADE SERVICES',
+                'service-1': 'Import and export of goods in maritime traffic',
+                'service-2': 'Planning and dispatch of customized industrial projects',
+                'service-3': 'Attendance of technical tariff meetings',
+                'service-4': 'Business training',
+                'service-5': 'Consultations before different authorities in customs and foreign trade matters',
+                'service-6': 'Tariff Classification consultations',
+                'service-7': 'Advice on strategies for proper import and export',
+                
+                // Maritime & Logistics
+                'maritime-title': 'International Maritime Freight',
+                'maritime-1': 'Wide variety of routes to optimize and expedite the shipment of goods.',
+                'maritime-2': 'Options with ample free days for delays and entry of letters of guarantee.',
+                'maritime-3': 'Timely tracking in the issuance of final documentation',
+                'logistics-title': 'Logistics Coordination',
+                'logistics-text': 'We offer comprehensive packages where benefits are provided, such as; low-cost maneuvers, storage and safeguarding of containers at NO extra cost.',
+                
+                // Features
+                'features-label': 'Competitive Advantages',
+                'features-title': 'Why Choose Us?',
+                'feature-1-title': 'Certified Experience',
+                'feature-1-text': 'Valid customs patent and years of experience',
+                'feature-2-title': '24/7 Support',
+                'feature-2-text': 'Continuous support for your operations',
+                'feature-3-title': 'Cost Optimization',
+                'feature-3-text': 'We reduce time and maximize efficiency',
+                
+                // CTA
+                'cta-title': 'Need specialized customs advice?',
+                'cta-subtitle': 'Our experts are ready to help you with your foreign trade operations',
+                'cta-button': 'Contact Now',
+                
+                // Footer
+                'footer-notices': 'Notices',
+                'footer-privacy': 'Privacy Policy',
+                'footer-terms': 'Terms and Conditions',
+                'footer-rights': 'All rights reserved.',
+            }
+        };
 
-        $('#imageModal').on('show.bs.modal', function (event) {
-            var button = $(event.relatedTarget);
-            var imageSrc = button.data('image');
-            var modal = $(this);
-            modal.find('#modalImage').attr('src', imageSrc);
+        let currentLanguage = 'es';
+
+        function changeLanguage(lang) {
+            currentLanguage = lang;
+            document.getElementById('current-lang').textContent = lang.toUpperCase();
+            document.querySelectorAll('[data-translate]').forEach(element => {
+                const key = element.getAttribute('data-translate');
+                if (translations[lang][key]) {
+                    element.textContent = translations[lang][key];
+                }
+            });
+            localStorage.setItem('preferredLanguage', lang);
+        }
+
+        window.addEventListener('DOMContentLoaded', () => {
+            const savedLang = localStorage.getItem('preferredLanguage');
+            if (savedLang && savedLang !== 'es') {
+                changeLanguage(savedLang);
+            }
         });
 
+        const mobileMenuBtn = document.getElementById('mobile-menu-btn');
+        const mobileMenu = document.getElementById('mobile-menu');
+        mobileMenuBtn.addEventListener('click', () => {
+            mobileMenu.classList.toggle('hidden');
+        });
+
+        // Scroll Animation
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('.animate-on-scroll').forEach(el => {
+            observer.observe(el);
+        });
     </script>
 </body>
 </html>

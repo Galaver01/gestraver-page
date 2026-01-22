@@ -1,162 +1,567 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es" class="scroll-smooth">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>GESTRAVER</title>
-    <link rel="stylesheet" href="styles.css">
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.css">
+    <title>Transporte Terrestre - GESTRAVER</title>
     <link rel="icon" href="IMG/GESTRAVER.jpg" type="image/x-icon">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Outfit:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        primary: '#DC2626',
+                        secondary: '#1E293B',
+                        accent: '#F59E0B',
+                        dark: '#0F172A',
+                    },
+                    fontFamily: {
+                        'display': ['Bebas Neue', 'sans-serif'],
+                        'body': ['Outfit', 'sans-serif'],
+                    },
+                }
+            }
+        }
+    </script>
+    <style>
+        .nav-blur {
+            backdrop-filter: blur(12px);
+            background-color: rgba(15, 23, 42, 0.9);
+        }
+        .animate-on-scroll {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 0.8s ease-out;
+        }
+        .animate-on-scroll.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        .card-hover {
+            transition: all 0.3s ease;
+        }
+        .card-hover:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 20px 40px rgba(220, 38, 38, 0.2);
+        }
+        .language-dropdown {
+            display: none;
+        }
+        .language-selector:hover .language-dropdown {
+            display: block;
+        }
+        .floating-icon {
+            animation: float 3s ease-in-out infinite;
+        }
+        @keyframes float {
+            0%, 100% { transform: translateY(0px); }
+            50% { transform: translateY(-10px); }
+        }
+    </style>
 </head>
-<body>
-    <header class="navbar navbar-expand-lg navbar-custom fixed-top">
-        <a class="navbar-brand" href="#"><img src="IMG/GESTRAVER.jpg" alt="Logo" class="logo"></a>
-        <span class="ml-3 h4 mb-0 text-white">GESTRAVER</span>
-        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav">
-            <span class="navbar-toggler-icon"></span>
-        </button>
-        <div class="collapse navbar-collapse" id="navbarNav">
-            <ul class="navbar-nav ml-auto">
-                <li class="nav-item"><a href="index.html" class="nav-link">Inicio</a></li>
-                <li class="nav-item"><a href="about.html" class="nav-link">Sobre Nosotros</a></li>
-                <li class="nav-item dropdown">
-                    <a href="#" class="nav-link dropdown-toggle" id="serviciosDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Servicios</a>
-                    <div class="dropdown-menu" aria-labelledby="serviciosDropdown">
-                        <a class="dropdown-item" href="Servicios-Aduanales.html">Servicios Aduanales</a>
-                        <a class="dropdown-item" href="Transporte.html">Transporte Terrestre</a>
-                        <a class="dropdown-item" href="Forward.html">Freight Forwarding</a>
+<body class="font-body bg-gray-50 text-gray-900">
+    
+    <!-- Navbar -->
+    <nav id="navbar" class="fixed w-full z-50 transition-all duration-300 nav-blur shadow-lg">
+        <div class="container mx-auto px-4 lg:px-8">
+            <div class="flex items-center justify-between h-20">
+                <!-- Logo -->
+                <a href="index.html" class="flex items-center space-x-3 group">
+                    <img src="IMG/GESTRAVER.jpg" alt="Logo GESTRAVER" class="h-12 w-12 rounded-lg shadow-lg transition-transform group-hover:scale-110">
+                    <span class="text-2xl font-display text-white tracking-wider">GESTRAVER</span>
+                </a>
+                
+                <!-- Desktop Menu -->
+                <div class="hidden lg:flex items-center space-x-1">
+                    <a href="index.html" class="px-4 py-2 text-white hover:text-primary transition-colors font-medium" data-translate="nav-inicio">Inicio</a>
+                    <a href="about.html" class="px-4 py-2 text-white hover:text-primary transition-colors font-medium" data-translate="nav-nosotros">Nosotros</a>
+                    <div class="relative group">
+                        <button class="px-4 py-2 text-primary transition-colors font-medium flex items-center">
+                            <span data-translate="nav-servicios">Servicios</span>
+                            <svg class="w-4 h-4 ml-1 transition-transform group-hover:rotate-180" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
+                            </svg>
+                        </button>
+                        <div class="absolute top-full left-0 w-56 bg-white rounded-lg shadow-2xl opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300 mt-2">
+                            <a href="Servicios-Aduanales.html" class="block px-6 py-3 text-gray-700 hover:bg-primary hover:text-white transition-colors">Servicios Aduanales</a>
+                            <a href="Transporte.html" class="block px-6 py-3 bg-primary text-white">Transporte Terrestre</a>
+                            <a href="Forward.html" class="block px-6 py-3 text-gray-700 hover:bg-primary hover:text-white transition-colors rounded-b-lg">Freight Forwarding</a>
+                        </div>
                     </div>
-                </li>
-                <li class="nav-item"><a href="index.html" class="nav-link">Trabajos</a></li>
-                <li class="nav-item"><a href="index.html" class="nav-link">Galería</a></li>
-                <li class="nav-item"><a href="index.html" class="nav-link">Contacto</a></li>
-            </ul>
+                    <a href="index.html#trabajos" class="px-4 py-2 text-white hover:text-primary transition-colors font-medium" data-translate="nav-trabajos">Trabajos</a>
+                    <a href="index.html#galeria" class="px-4 py-2 text-white hover:text-primary transition-colors font-medium" data-translate="nav-galeria">Galería</a>
+                    <a href="index.html#contacto" class="px-4 py-2 bg-primary text-white rounded-lg hover:bg-red-700 transition-all font-semibold ml-4" data-translate="nav-contacto">Contacto</a>
+                    
+                    <!-- Language Selector -->
+                    <div class="language-selector ml-2 relative">
+                        <button class="px-3 py-2 text-white hover:text-primary transition-colors flex items-center gap-2">
+                            <i class="fas fa-globe"></i>
+                            <span id="current-lang">ES</span>
+                            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
+                            </svg>
+                        </button>
+                        <div class="language-dropdown absolute top-full right-0 mt-2 bg-white rounded-lg shadow-2xl overflow-hidden min-w-[150px]">
+                            <div onclick="changeLanguage('es')" class="px-4 py-3 cursor-pointer hover:bg-primary hover:text-white transition-colors flex items-center gap-2">
+                                <span>🇲🇽</span>
+                                <span>Español</span>
+                            </div>
+                            <div onclick="changeLanguage('en')" class="px-4 py-3 cursor-pointer hover:bg-primary hover:text-white transition-colors flex items-center gap-2">
+                                <span>🇺🇸</span>
+                                <span>English</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Mobile Menu Button -->
+                <button id="mobile-menu-btn" class="lg:hidden text-white focus:outline-none">
+                    <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
+                    </svg>
+                </button>
+            </div>
         </div>
-    </header>
-    <section id="sobre-nosotros" class="about-section">
-        <div class="container" >
-            <div class="history" data-aos="fade-up">
-                <h2 class="titulo-historia">TRANSPORTE TERRESTRE</h2> 
-                <p>Nuestra extensa de transporte cubre los principales puertos de México, brindándote soluciones logísticas eficientes, seguras y a medida para tus operaciones de comercio exterior.</p>
+        
+        <!-- Mobile Menu -->
+        <div id="mobile-menu" class="hidden lg:hidden bg-secondary/95 backdrop-blur-lg">
+            <div class="container mx-auto px-4 py-4 space-y-2">
+                <a href="index.html" class="block px-4 py-3 text-white hover:bg-primary rounded-lg transition-colors" data-translate="nav-inicio">Inicio</a>
+                <a href="about.html" class="block px-4 py-3 text-white hover:bg-primary rounded-lg transition-colors" data-translate="nav-nosotros">Nosotros</a>
+                <a href="Servicios-Aduanales.html" class="block px-4 py-3 text-white hover:bg-primary rounded-lg transition-colors">Servicios Aduanales</a>
+                <a href="Transporte.html" class="block px-4 py-3 bg-primary text-white rounded-lg">Transporte Terrestre</a>
+                <a href="Forward.html" class="block px-4 py-3 text-white hover:bg-primary rounded-lg transition-colors">Freight Forwarding</a>
+                <a href="index.html#trabajos" class="block px-4 py-3 text-white hover:bg-primary rounded-lg transition-colors" data-translate="nav-trabajos">Trabajos</a>
+                <a href="index.html#galeria" class="block px-4 py-3 text-white hover:bg-primary rounded-lg transition-colors" data-translate="nav-galeria">Galería</a>
+                <a href="index.html#contacto" class="block px-4 py-3 bg-primary text-white rounded-lg text-center font-semibold" data-translate="nav-contacto">Contacto</a>
+                
+                <!-- Language Selector Mobile -->
+                <div class="pt-2 border-t border-gray-700">
+                    <button onclick="changeLanguage('es')" class="block w-full px-4 py-3 text-white hover:bg-primary rounded-lg transition-colors text-left">
+                        🇲🇽 Español
+                    </button>
+                    <button onclick="changeLanguage('en')" class="block w-full px-4 py-3 text-white hover:bg-primary rounded-lg transition-colors text-left">
+                        🇺🇸 English
+                    </button>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="relative pt-32 pb-16 bg-gradient-to-br from-dark via-secondary to-dark overflow-hidden">
+        <div class="absolute inset-0 opacity-10">
+            <div class="absolute top-20 left-10 w-72 h-72 bg-primary rounded-full filter blur-3xl"></div>
+            <div class="absolute bottom-20 right-10 w-96 h-96 bg-accent rounded-full filter blur-3xl"></div>
+        </div>
+        <div class="container mx-auto px-4 lg:px-8 relative z-10">
+            <div class="max-w-4xl mx-auto text-center">
+                <div class="inline-block mb-6">
+                    <div class="w-24 h-24 mx-auto bg-gradient-to-br from-primary to-accent rounded-2xl flex items-center justify-center floating-icon">
+                        <i class="fas fa-truck text-5xl text-white"></i>
+                    </div>
+                </div>
+                <h1 class="text-4xl md:text-6xl font-display text-white mb-6 tracking-wider" data-translate="transport-hero-title">
+                    TRANSPORTE TERRESTRE
+                </h1>
+                <div class="h-1 w-32 bg-primary mx-auto mb-6"></div>
+                <p class="text-xl text-gray-300 max-w-3xl mx-auto" data-translate="transport-hero-subtitle">
+                    Nuestra extensa red de transporte cubre los principales puertos de México, brindándote soluciones logísticas eficientes, seguras y a medida para tus operaciones de comercio exterior.
+                </p>
             </div>
         </div>
     </section>
-    <section id="cobertura" class="cobertura-section">
-        <div class="container">
-            <div class="row">
-                <div class="col-md-6">
-                    <h2 class="cobertura-title">COBERTURA</h2>
-                    <div class="cobertura-divider"></div>
-                    <p class="cobertura-text">
-                        Tu solución logística completa: recolectamos, consolidamos, trasladamos y entregamos tu mercancía a cualquier rincón de México, con la seguridad y tecnología que tu negocio merece.
-                    </p>
-                    <ul class="cobertura-legend">
-                        <li><span class="dot transport-office"></span> Patios y oficina de Transporteterrestre</li>
+
+    <!-- Coverage Section -->
+    <section class="py-20 md:py-32 bg-white">
+        <div class="container mx-auto px-4 lg:px-8">
+            <div class="max-w-6xl mx-auto">
+                <div class="grid md:grid-cols-2 gap-12 items-center">
+                    <div class="animate-on-scroll">
+                        <span class="text-primary font-semibold tracking-wider uppercase text-sm" data-translate="coverage-label">Alcance Nacional</span>
+                        <h2 class="text-4xl md:text-6xl font-display mt-4 mb-6 text-secondary" data-translate="coverage-title">
+                            COBERTURA
+                        </h2>
+                        <div class="h-1 w-20 bg-primary mb-8"></div>
+                        <p class="text-lg text-gray-700 leading-relaxed mb-8" data-translate="coverage-text">
+                            Tu solución logística completa: recolectamos, consolidamos, trasladamos y entregamos tu mercancía a cualquier rincón de México, con la seguridad y tecnología que tu negocio merece.
+                        </p>
+                        
+                        <div class="bg-gradient-to-r from-primary/10 to-accent/10 rounded-xl p-6 border-l-4 border-primary">
+                            <div class="flex items-center">
+                                <div class="w-4 h-4 bg-primary rounded-full mr-3"></div>
+                                <p class="text-gray-700 font-medium" data-translate="coverage-legend">Patios y oficina de Transporte terrestre</p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="animate-on-scroll">
+                        <div class="relative rounded-2xl overflow-hidden shadow-2xl">
+                            <img src="IMG/Cobertura.jpg" alt="Mapa de Cobertura" class="w-full h-auto">
+                            <div class="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Services Section -->
+    <section class="py-20 md:py-32 bg-gradient-to-br from-gray-50 to-gray-100">
+        <div class="container mx-auto px-4 lg:px-8">
+            <div class="text-center mb-16 animate-on-scroll">
+                <span class="text-primary font-semibold tracking-wider uppercase text-sm" data-translate="services-label">Soluciones Logísticas</span>
+                <h2 class="text-4xl md:text-6xl font-display mt-4 mb-6 text-secondary" data-translate="services-title">
+                    SERVICIOS
+                </h2>
+                <div class="h-1 w-20 bg-primary mx-auto mb-8"></div>
+                <p class="text-lg text-gray-700 max-w-4xl mx-auto" data-translate="services-subtitle">
+                    Tu solución integral en transporte terrestre. Desde México hasta cualquier destino internacional, nuestra infraestructura, tecnología y flota de camiones te ofrecen un servicio completo y confiable para tus necesidades logísticas.
+                </p>
+            </div>
+
+            <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-8 max-w-6xl mx-auto">
+                <!-- Service 1 -->
+                <div class="animate-on-scroll card-hover bg-white rounded-2xl shadow-lg p-8 text-center border-t-4 border-primary">
+                    <div class="w-20 h-20 mx-auto mb-6 bg-gradient-to-br from-primary to-red-700 rounded-2xl flex items-center justify-center">
+                        <i class="fas fa-truck-loading text-4xl text-white"></i>
+                    </div>
+                    <h3 class="text-xl font-display text-secondary mb-2" data-translate="service-1">CARGA CONTENERIZADA</h3>
+                </div>
+
+                <!-- Service 2 -->
+                <div class="animate-on-scroll card-hover bg-white rounded-2xl shadow-lg p-8 text-center border-t-4 border-accent" style="animation-delay: 0.1s;">
+                    <div class="w-20 h-20 mx-auto mb-6 bg-gradient-to-br from-accent to-orange-700 rounded-2xl flex items-center justify-center">
+                        <i class="fas fa-boxes text-4xl text-white"></i>
+                    </div>
+                    <h3 class="text-xl font-display text-secondary mb-2" data-translate="service-2">CARGA SUELTA</h3>
+                </div>
+
+                <!-- Service 3 -->
+                <div class="animate-on-scroll card-hover bg-white rounded-2xl shadow-lg p-8 text-center border-t-4 border-primary" style="animation-delay: 0.2s;">
+                    <div class="w-20 h-20 mx-auto mb-6 bg-gradient-to-br from-primary to-red-700 rounded-2xl flex items-center justify-center">
+                        <i class="fas fa-exclamation-triangle text-4xl text-white"></i>
+                    </div>
+                    <h3 class="text-xl font-display text-secondary mb-2" data-translate="service-3">MERCANCÍA PELIGROSA</h3>
+                </div>
+
+                <!-- Service 4 -->
+                <div class="animate-on-scroll card-hover bg-white rounded-2xl shadow-lg p-8 text-center border-t-4 border-accent" style="animation-delay: 0.3s;">
+                    <div class="w-20 h-20 mx-auto mb-6 bg-gradient-to-br from-accent to-orange-700 rounded-2xl flex items-center justify-center">
+                        <i class="fas fa-truck-monster text-4xl text-white"></i>
+                    </div>
+                    <h3 class="text-xl font-display text-secondary mb-2" data-translate="service-4">CARGA SOBREDIMENSIONADA</h3>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Vehicle Types Section -->
+    <section class="py-20 md:py-32 bg-gradient-to-br from-dark via-secondary to-dark">
+        <div class="container mx-auto px-4 lg:px-8">
+            <div class="text-center mb-16 animate-on-scroll">
+                <span class="text-accent font-semibold tracking-wider uppercase text-sm" data-translate="vehicles-label">Nuestra Flota</span>
+                <h2 class="text-4xl md:text-6xl font-display mt-4 mb-6 text-white" data-translate="vehicles-title">
+                    TIPOS DE TRANSPORTE
+                </h2>
+                <div class="h-1 w-20 bg-primary mx-auto mb-8"></div>
+                <p class="text-lg text-gray-300 max-w-4xl mx-auto mb-12" data-translate="vehicles-subtitle">
+                    Superamos los desafíos del transporte terrestre en México con soluciones personalizadas que se adaptan a tus necesidades. Optimizamos tu cadena logística, mejorando la capacidad, frecuencia y costos de tus envíos.
+                </p>
+                <h3 class="text-2xl font-semibold text-white mb-8" data-translate="vehicles-we-have">CONTAMOS CON:</h3>
+            </div>
+
+            <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-6 max-w-7xl mx-auto">
+                <!-- Vehicle 1 -->
+                <div class="animate-on-scroll bg-white/5 backdrop-blur-sm border border-white/10 rounded-xl p-6 hover:bg-white/10 transition-all">
+                    <div class="flex items-center space-x-4">
+                        <div class="w-12 h-12 bg-gradient-to-br from-primary to-accent rounded-lg flex items-center justify-center flex-shrink-0">
+                            <i class="fas fa-truck text-2xl text-white"></i>
+                        </div>
+                        <h4 class="text-white font-semibold" data-translate="vehicle-1">Tractocamiones</h4>
+                    </div>
+                </div>
+
+                <!-- Vehicle 2 -->
+                <div class="animate-on-scroll bg-white/5 backdrop-blur-sm border border-white/10 rounded-xl p-6 hover:bg-white/10 transition-all" style="animation-delay: 0.05s;">
+                    <div class="flex items-center space-x-4">
+                        <div class="w-12 h-12 bg-gradient-to-br from-primary to-accent rounded-lg flex items-center justify-center flex-shrink-0">
+                            <i class="fas fa-truck-pickup text-2xl text-white"></i>
+                        </div>
+                        <h4 class="text-white font-semibold" data-translate="vehicle-2">Camionetas de carga de 1 a 4 toneladas</h4>
+                    </div>
+                </div>
+
+                <!-- Vehicle 3 -->
+                <div class="animate-on-scroll bg-white/5 backdrop-blur-sm border border-white/10 rounded-xl p-6 hover:bg-white/10 transition-all" style="animation-delay: 0.1s;">
+                    <div class="flex items-center space-x-4">
+                        <div class="w-12 h-12 bg-gradient-to-br from-primary to-accent rounded-lg flex items-center justify-center flex-shrink-0">
+                            <i class="fas fa-box text-2xl text-white"></i>
+                        </div>
+                        <h4 class="text-white font-semibold" data-translate="vehicle-3">Cajas secas 48 y 53 pies</h4>
+                    </div>
+                </div>
+
+                <!-- Vehicle 4 -->
+                <div class="animate-on-scroll bg-white/5 backdrop-blur-sm border border-white/10 rounded-xl p-6 hover:bg-white/10 transition-all" style="animation-delay: 0.15s;">
+                    <div class="flex items-center space-x-4">
+                        <div class="w-12 h-12 bg-gradient-to-br from-primary to-accent rounded-lg flex items-center justify-center flex-shrink-0">
+                            <i class="fas fa-trailer text-2xl text-white"></i>
+                        </div>
+                        <h4 class="text-white font-semibold" data-translate="vehicle-4">Plataformas</h4>
+                    </div>
+                </div>
+
+                <!-- Vehicle 5 -->
+                <div class="animate-on-scroll bg-white/5 backdrop-blur-sm border border-white/10 rounded-xl p-6 hover:bg-white/10 transition-all" style="animation-delay: 0.2s;">
+                    <div class="flex items-center space-x-4">
+                        <div class="w-12 h-12 bg-gradient-to-br from-primary to-accent rounded-lg flex items-center justify-center flex-shrink-0">
+                            <i class="fas fa-trailer text-2xl text-white"></i>
+                        </div>
+                        <h4 class="text-white font-semibold" data-translate="vehicle-5">Lowboys</h4>
+                    </div>
+                </div>
+
+                <!-- Vehicle 6 -->
+                <div class="animate-on-scroll bg-white/5 backdrop-blur-sm border border-white/10 rounded-xl p-6 hover:bg-white/10 transition-all" style="animation-delay: 0.25s;">
+                    <div class="flex items-center space-x-4">
+                        <div class="w-12 h-12 bg-gradient-to-br from-primary to-accent rounded-lg flex items-center justify-center flex-shrink-0">
+                            <i class="fas fa-trailer text-2xl text-white"></i>
+                        </div>
+                        <h4 class="text-white font-semibold" data-translate="vehicle-6">Cama baja</h4>
+                    </div>
+                </div>
+
+                <!-- Vehicle 7 -->
+                <div class="animate-on-scroll bg-white/5 backdrop-blur-sm border border-white/10 rounded-xl p-6 hover:bg-white/10 transition-all" style="animation-delay: 0.3s;">
+                    <div class="flex items-center space-x-4">
+                        <div class="w-12 h-12 bg-gradient-to-br from-primary to-accent rounded-lg flex items-center justify-center flex-shrink-0">
+                            <i class="fas fa-trailer text-2xl text-white"></i>
+                        </div>
+                        <h4 class="text-white font-semibold" data-translate="vehicle-7">Portacontenedores</h4>
+                    </div>
+                </div>
+
+                <!-- Vehicle 8 -->
+                <div class="animate-on-scroll bg-white/5 backdrop-blur-sm border border-white/10 rounded-xl p-6 hover:bg-white/10 transition-all" style="animation-delay: 0.35s;">
+                    <div class="flex items-center space-x-4">
+                        <div class="w-12 h-12 bg-gradient-to-br from-primary to-accent rounded-lg flex items-center justify-center flex-shrink-0">
+                            <i class="fas fa-truck text-2xl text-white"></i>
+                        </div>
+                        <h4 class="text-white font-semibold" data-translate="vehicle-8">Torton y Rabon</h4>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="py-16 bg-gradient-to-r from-primary to-accent">
+        <div class="container mx-auto px-4 lg:px-8 text-center">
+            <h2 class="text-3xl md:text-5xl font-display text-white mb-6" data-translate="cta-title">
+                ¿Necesitas transporte terrestre confiable?
+            </h2>
+            <p class="text-xl text-white/90 mb-8 max-w-2xl mx-auto" data-translate="cta-subtitle">
+                Cotiza ahora y descubre cómo podemos optimizar tu logística
+            </p>
+            <a href="index.html#contacto" class="inline-flex items-center px-8 py-4 bg-white text-primary font-semibold rounded-lg hover:bg-gray-100 transition-all shadow-xl hover:shadow-2xl transform hover:scale-105">
+                <span data-translate="cta-button">Solicitar Cotización</span>
+                <svg class="w-5 h-5 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"></path>
+                </svg>
+            </a>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-dark text-white py-12">
+        <div class="container mx-auto px-4 lg:px-8">
+            <div class="grid md:grid-cols-2 gap-8 mb-8">
+                <div>
+                    <div class="flex items-center space-x-3 mb-4">
+                        <img src="IMG/GESTRAVER.jpg" alt="Logo GESTRAVER" class="h-16 w-16 rounded-lg">
+                        <div>
+                            <h3 class="text-2xl font-display">GESTRAVER</h3>
+                            <p class="text-gray-400 text-sm">Gestiones de Tráfico Veracruz</p>
+                        </div>
+                    </div>
+                </div>
+                <div>
+                    <h4 class="text-lg font-semibold mb-4" data-translate="footer-notices">Avisos</h4>
+                    <ul class="space-y-2">
+                        <li>
+                            <a href="Aviso.html" class="text-gray-400 hover:text-primary transition-colors" data-translate="footer-privacy">Aviso de Privacidad</a>
+                        </li>
+                        <li>
+                            <a href="#" class="text-gray-400 hover:text-primary transition-colors" data-translate="footer-terms">Términos y Condiciones</a>
+                        </li>
                     </ul>
                 </div>
-                <div class="col-md-6">
-                    <img src="IMG/Cobertura.jpg" alt="Cobertura" class="cobertura-map">
-                </div>
             </div>
-        </div>
-    </section>
-    <section id="servicios">
-        <div class="container">
-            <h2>SERVICIOS</h2>
-            <p>Tu solución integral en transporte terrestre. Desde México hasta cualquier destino internacional, nuestra infraestructura, tecnología y flota de camiones te ofrecen un servicio completo y confiable para tus necesidades logísticas.</p>
-            <div class="servicios-grid">
-                <div class="servicio">
-                    <i class="fas fa-truck-loading"></i>
-                    <h3>CARGA CONTENERIZADA</h3>
-                </div>
-                <div class="servicio">
-                    <i class="fas fa-boxes"></i>
-                    <h3>CARGA SUELTA</h3>
-                </div>
-                <div class="servicio">
-                    <i class="fas fa-exclamation-triangle"></i>
-                    <h3>MERCANCÍA PELIGROSA</h3>
-                </div>
-                <div class="servicio">
-                    <i class="fas fa-truck-monster"></i>
-                    <h3>CARGA SOBREDIMENSIONADA</h3>
-                </div>
+            <div class="border-t border-gray-800 pt-8 text-center text-gray-400">
+                <p>&copy; 2024 GESTRAVER. <span data-translate="footer-rights">Todos los derechos reservados.</span></p>
             </div>
-        </div>
-    </section>
-    <section id="tipos-de-transporte">
-        <div class="container">
-            <h2>TIPOS DE TRANSPORTE</h2>
-            <p>Superamos los desafíos del transporte terrestre en México con soluciones personalizadas que se adaptan a tus necesidades. Optimizamos tu cadena logística, mejorando la capacidad, frecuencia y costos de tus envíos.</p>
-    
-            <h3>CONTAMOS CON:</h3>
-            <div class="tipos-transporte-grid">
-                <div class="tipo-transporte">
-                    <i class="fas fa-truck"></i> <h4>Tractocamiones</h4>
-                </div>
-                <div class="tipo-transporte">
-                    <i class="fas fa-truck-pickup"></i> <h4>Camionetas de carga de 1 a 4 toneladas</h4>
-                </div>
-                <div class="tipo-transporte">
-                    <i class="fas fa-box"></i> <h4>Cajas secas 48 y 53 pies</h4>
-                </div>
-                <div class="tipo-transporte">
-                    <i class="fas fa-trailer"></i> <h4>Plataformas</h4>
-                </div>
-                <div class="tipo-transporte">
-                    <i class="fas fa-trailer"></i> <h4>Lowboys</h4>
-                </div>
-                <div class="tipo-transporte">
-                    <i class="fas fa-trailer"></i> <h4>Cama baja</h4>
-                </div>
-                <div class="tipo-transporte">
-                    <i class="fas fa-trailer"></i> <h4>Portacontenedores</h4>
-                </div>
-                <div class="tipo-transporte">
-                    <i class="fas fa-truck"></i> <h4>Torton y Rabon</h4>
-                </div>
-            </div>
-        </div>
-    </section>
-        
-    <footer>
-        <div class="footer-container">
-            <div class="footer-section logo">
-                <img src="IMG/GESTRAVER.jpg" alt="Logo de GESTRAVER">
-                <p>GESTIONES DE TRAFICO VERACRUZ</p>
-            </div>
-    
-                
-            <div class="footer-section">
-                <h4>Avisos</h4> 
-                <ul>
-                    <li><a href="#" target="_blank">Aviso de Privacidad</a></li>
-                    <li><a href="#" target="_blank">Terminos y condiciones</a></li>
-                </ul>
-            </div>
-        </div>
-    
-        <div class="footer-copyright">
-            <p>&copy; 2024 GESTRAVER. Todos los derechos reservados.</p>
         </div>
     </footer>
 
-    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.js"></script>
     <script>
-        AOS.init();
+        // Translation System
+        const translations = {
+            es: {
+                // Navigation
+                'nav-inicio': 'Inicio',
+                'nav-nosotros': 'Nosotros',
+                'nav-servicios': 'Servicios',
+                'nav-trabajos': 'Trabajos',
+                'nav-galeria': 'Galería',
+                'nav-contacto': 'Contacto',
+                
+                // Hero
+                'transport-hero-title': 'TRANSPORTE TERRESTRE',
+                'transport-hero-subtitle': 'Nuestra extensa red de transporte cubre los principales puertos de México, brindándote soluciones logísticas eficientes, seguras y a medida para tus operaciones de comercio exterior.',
+                
+                // Coverage
+                'coverage-label': 'Alcance Nacional',
+                'coverage-title': 'COBERTURA',
+                'coverage-text': 'Tu solución logística completa: recolectamos, consolidamos, trasladamos y entregamos tu mercancía a cualquier rincón de México, con la seguridad y tecnología que tu negocio merece.',
+                'coverage-legend': 'Patios y oficina de Transporte terrestre',
+                
+                // Services
+                'services-label': 'Soluciones Logísticas',
+                'services-title': 'SERVICIOS',
+                'services-subtitle': 'Tu solución integral en transporte terrestre. Desde México hasta cualquier destino internacional, nuestra infraestructura, tecnología y flota de camiones te ofrecen un servicio completo y confiable para tus necesidades logísticas.',
+                'service-1': 'CARGA CONTENERIZADA',
+                'service-2': 'CARGA SUELTA',
+                'service-3': 'MERCANCÍA PELIGROSA',
+                'service-4': 'CARGA SOBREDIMENSIONADA',
+                
+                // Vehicles
+                'vehicles-label': 'Nuestra Flota',
+                'vehicles-title': 'TIPOS DE TRANSPORTE',
+                'vehicles-subtitle': 'Superamos los desafíos del transporte terrestre en México con soluciones personalizadas que se adaptan a tus necesidades. Optimizamos tu cadena logística, mejorando la capacidad, frecuencia y costos de tus envíos.',
+                'vehicles-we-have': 'CONTAMOS CON:',
+                'vehicle-1': 'Tractocamiones',
+                'vehicle-2': 'Camionetas de carga de 1 a 4 toneladas',
+                'vehicle-3': 'Cajas secas 48 y 53 pies',
+                'vehicle-4': 'Plataformas',
+                'vehicle-5': 'Lowboys',
+                'vehicle-6': 'Cama baja',
+                'vehicle-7': 'Portacontenedores',
+                'vehicle-8': 'Torton y Rabon',
+                
+                // CTA
+                'cta-title': '¿Necesitas transporte terrestre confiable?',
+                'cta-subtitle': 'Cotiza ahora y descubre cómo podemos optimizar tu logística',
+                'cta-button': 'Solicitar Cotización',
+                
+                // Footer
+                'footer-notices': 'Avisos',
+                'footer-privacy': 'Aviso de Privacidad',
+                'footer-terms': 'Términos y Condiciones',
+                'footer-rights': 'Todos los derechos reservados.',
+            },
+            en: {
+                // Navigation
+                'nav-inicio': 'Home',
+                'nav-nosotros': 'About Us',
+                'nav-servicios': 'Services',
+                'nav-trabajos': 'Work',
+                'nav-galeria': 'Gallery',
+                'nav-contacto': 'Contact',
+                
+                // Hero
+                'transport-hero-title': 'GROUND TRANSPORTATION',
+                'transport-hero-subtitle': 'Our extensive transportation network covers the main ports of Mexico, providing you with efficient, safe and customized logistics solutions for your foreign trade operations.',
+                
+                // Coverage
+                'coverage-label': 'National Reach',
+                'coverage-title': 'COVERAGE',
+                'coverage-text': 'Your complete logistics solution: we collect, consolidate, transport and deliver your merchandise to any corner of Mexico, with the security and technology your business deserves.',
+                'coverage-legend': 'Ground Transportation yards and office',
+                
+                // Services
+                'services-label': 'Logistics Solutions',
+                'services-title': 'SERVICES',
+                'services-subtitle': 'Your comprehensive ground transportation solution. From Mexico to any international destination, our infrastructure, technology and truck fleet offer you complete and reliable service for your logistics needs.',
+                'service-1': 'CONTAINERIZED CARGO',
+                'service-2': 'LOOSE CARGO',
+                'service-3': 'HAZARDOUS MATERIALS',
+                'service-4': 'OVERSIZED CARGO',
+                
+                // Vehicles
+                'vehicles-label': 'Our Fleet',
+                'vehicles-title': 'TRANSPORTATION TYPES',
+                'vehicles-subtitle': 'We overcome the challenges of ground transportation in Mexico with personalized solutions that adapt to your needs. We optimize your logistics chain, improving capacity, frequency and shipping costs.',
+                'vehicles-we-have': 'WE HAVE:',
+                'vehicle-1': 'Tractor-trailers',
+                'vehicle-2': 'Cargo vans 1 to 4 tons',
+                'vehicle-3': 'Dry boxes 48 and 53 feet',
+                'vehicle-4': 'Flatbeds',
+                'vehicle-5': 'Lowboys',
+                'vehicle-6': 'Low bed',
+                'vehicle-7': 'Container carriers',
+                'vehicle-8': 'Torton and Rabon',
+                
+                // CTA
+                'cta-title': 'Need reliable ground transportation?',
+                'cta-subtitle': 'Get a quote now and discover how we can optimize your logistics',
+                'cta-button': 'Request Quote',
+                
+                // Footer
+                'footer-notices': 'Notices',
+                'footer-privacy': 'Privacy Policy',
+                'footer-terms': 'Terms and Conditions',
+                'footer-rights': 'All rights reserved.',
+            }
+        };
 
-        $('#imageModal').on('show.bs.modal', function (event) {
-            var button = $(event.relatedTarget);
-            var imageSrc = button.data('image');
-            var modal = $(this);
-            modal.find('#modalImage').attr('src', imageSrc);
+        let currentLanguage = 'es';
+
+        function changeLanguage(lang) {
+            currentLanguage = lang;
+            document.getElementById('current-lang').textContent = lang.toUpperCase();
+            document.querySelectorAll('[data-translate]').forEach(element => {
+                const key = element.getAttribute('data-translate');
+                if (translations[lang][key]) {
+                    element.textContent = translations[lang][key];
+                }
+            });
+            localStorage.setItem('preferredLanguage', lang);
+        }
+
+        window.addEventListener('DOMContentLoaded', () => {
+            const savedLang = localStorage.getItem('preferredLanguage');
+            if (savedLang && savedLang !== 'es') {
+                changeLanguage(savedLang);
+            }
         });
 
+        const mobileMenuBtn = document.getElementById('mobile-menu-btn');
+        const mobileMenu = document.getElementById('mobile-menu');
+        mobileMenuBtn.addEventListener('click', () => {
+            mobileMenu.classList.toggle('hidden');
+        });
+
+        // Scroll Animation
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('.animate-on-scroll').forEach(el => {
+            observer.observe(el);
+        });
     </script>
 </body>
 </html>
